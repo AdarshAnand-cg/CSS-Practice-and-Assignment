@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Myntra</title>
+    <link rel="icon" type="image/png" href="https://static.vecteezy.com/system/resources/previews/073/494/864/non_2x/myntra-logo-circular-glossy-icon-with-transparent-background-free-png.png">
+    <style>
+        *{
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-weight: 500;
+        }
+        .nav {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        }
+        .basic-dropdown{
+            border: 2px solid rgb(255, 255, 255);
+            position: absolute;top: 2px; left: 2px;
+            width: 99.5vw;
+            box-shadow: 2px 2px 10px;
+        }
+        .dropdown {
+        position: relative;
+        left: -90px;
+        display: flex;
+        align-items: center;
+        }
+        .dropdown-content {
+        display: none;
+        position: absolute;top: 84px;left: -20px;
+        min-width: 360px;
+        display: flex;
+        }
+        .dropdown:hover .dropdown-content {
+        display: inline;
+        background-color: white;
+        width: inherit;
+        }
+        .basic-dropdown ul {
+        display: flex;
+        list-style-type: none;
+        margin:0px;
+        padding: 0px 100px;
+        background-color: #FFFFFF;
+        }
+        .basic-dropdown li {
+        position: relative;
+        }
+        .basic-dropdown li a {
+        display: block;
+        color: rgb(5, 5, 5);
+        padding: 14px 16px;
+        text-decoration: none;  
+        }
+        .basic-dropdown .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 360px;
+        box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+        }
+        .basic-dropdown .dropdown-content a {
+        color: black;
+        padding: 5px 30px;
+        font-weight: normal;
+        font-size: 13px;
+        }
+        .basic-dropdown .dropdown:hover .dropdown-content {
+        display:inline-flex;
+        }
+        .basic-dropdown .dropdown-content a:hover {
+        font-weight: 500;
+        }
+        .top{
+            color:#fd6286;     
+        }
+
+
+    </style>
+</head>
+<body>
+        <nav class="basic-dropdown">
+    <ul>
+        <li class="dropdown"><a href="https://www.myntra.com/"><img src="https://www.pngall.com/wp-content/uploads/17/Myntra-Logo-Trendy-Fashion-PNG.png" height="50px" width="80px"></a></li>
+        <li class="dropdown"><a href="https://www.myntra.com/shop/men">MEN</a>
+            <div class="dropdown-content">
+                <div class="redbar" style="border: 2px solid#fd6286; height: 0px; width: 66px; position: absolute; top: -2px; left: 18px;"></div>
+                <!--First Column of the Dropdown-->
+                <div class="first column">
+                    <div style="width: 240px; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: 12px;font-weight: lighter; font-size: smaller; font-weight: lighter;">
+                    <a href="@" class="top" style="color:#fd6286; font-size: larger; font-weight: bold;">Topwear</a>
+                    <a href="https://www.myntra.com/shop/men-tshirts">T-Shirts</a>
+                    <a href="https://www.myntra.com/shop/men-casual-shirts">Casual Shirts</a>
+                    <a href="https://www.myntra.com/shop/men-formal-shirts">Formal Shirts</a>
+                    <a href="https://www.myntra.com/shop/men-sweatshirts">Sweatshirts</a>
+                    <a href="https://www.myntra.com/shop/men-sweaters">Sweaters</a>
+                    <a href="https://www.myntra.com/shop/men-jackets">Jackets</a>
+                    <a href="https://www.myntra.com/shop/men-blazers">Blazers & Coats</a>
+                    <a href="https://www.myntra.com/shop/men-suits">Suits</a>
+                    <a href="https://www.myntra.com/shop/rain-jacket">Rain Jackets</a><hr style="width: 180px; background-color: grey; opacity: 0.5;">
+                    </div>
+                    <div style="width: 240px; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: 12px;font-weight: lighter; font-size: smaller; font-weight: lighter;">
+                        <a href="@" class="top" style="color:#fd6286; font-size: larger; font-weight: bold;">Indian & Festive Wear</a>
+                        <a href="https://www.myntra.com/shop/men">Kurtas & Kurta Sets</a>
+                        <a href="https://www.myntra.com/shop/men">Sherwanis</a>
+                        <a href="https://www.myntra.com/shop/men">Nehru Jackets</a>
+                        <a href="https://www.myntra.com/shop/men">Dhotis</a><br>
+                    </div>
+                </div>
+                <!--Second Column of the Dropdown-->
+                <div class="second column" style="background-color: #f4f3f3;">
+                    <div style="width: 240px; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: 12px;font-weight: lighter; font-size: smaller; font-weight: lighter;">
+                    <a href="@" class="top" style="color:#fd6286; font-size: larger; font-weight: bold; margin-bottom:10px;">Bottomwear</a>
+                    <a href="https://www.myntra.com/shop/men">Jeans</a>
+                    <a href="https://www.myntra.com/shop/men">Casual Trousers</a>
+                    <a href="https://www.myntra.com/shop/men">Formal Trousers</a>                                                
+                    <a href="https://www.myntra.com/shop/men">Shorts</a>
+                    <a href="https://www.myntra.com/shop/men" style="margin-bottom:10px;">Track Pants & Joggers</a><hr style="width: 180px; background-color: grey; opacity: 0.5;">
+                    </div>
+                    <div style="width: 240px; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: 12px;font-weight: lighter; font-size: smaller; font-weight: lighter;">
+                    <a href="@" class="top" style="color:#fd6286; font-size: larger; font-weight: bold; margin-bottom:10px;">Innerwear & Sleepwear</a>
+                    <a href="https://www.myntra.com/shop/men">Briefs & Trunks</a>
+                    <a href="https://www.myntra.com/shop/men">Boxers</a>
+                    <a href="https://www.myntra.com/shop/men">Vests</a>
+                    <a href="https://www.myntra.com/shop/men">Sleepwear & Loungewear</a>
+                    <a href="https://www.myntra.com/shop/men">Thermals</a><hr style="width: 180px; background-color: grey; opacity: 0.5;">
+                    <a href="@" class="top" style="color:#fd6286; font-size: larger; font-weight: bold; margin-top: 10px;">Plus Size</a>
+                    </div>
+                </div>
+                <!--Third Column of the Dropdown-->
+                <div >
+                    <div style="width: 240px; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: 12px;font-weight: lighter; font-size: smaller; font-weight: lighter;">
+                    <a href="@" class="top" style="color:#fd6286; font-size: larger; font-weight: bold;">Footwear</a>
+                    <a href="https://www.myntra.com/shop/men">Casual Shoes</a>
+                    <a href="https://www.myntra.com/shop/men">Sports Shoes</a>
+                    <a href="https://www.myntra.com/shop/men">Formal Shoes</a>
+                    <a href="https://www.myntra.com/shop/men">Sneakers</a>
+                    <a href="https://www.myntra.com/shop/men">Socks</a>
+                    <a href="https://www.myntra.com/shop/men">Sandals & Floaters</a><br><hr style="width: 180px; background-color: grey; opacity: 0.5;">
+                    </div>
+                    <div style="width: 240px; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: 12px;font-weight: lighter; font-size: smaller; font-weight: lighter;">
+                    <a href="@" class="top" style="color:#fd6286; font-size: 14.6px; font-weight: bold;  letter-spacing: -0.3px;">Personal Care & Grooming</a><br><br>
+                    <a href="@" class="top" style="color:#fd6286; font-size: larger; font-weight: bold;">Sunglasses & Frames</a><br><br>
+                    <a href="@" class="top" style="color:#fd6286; font-size: larger; font-weight: bold;">Watches</a>
+                    </div>
+                </div>
+                <!--Fourth Column of the Dropdown-->
+                <div style="background-color: #f4f3f3;">
+                    <div style="width: 240px; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: 12px;font-weight: lighter; font-size: smaller; font-weight: lighter;">
+                    <a href="@" class="top" style="color:#fd6286; font-size: larger; font-weight: bold;">Sports & Active Wear</a>
+                    <a href="https://www.myntra.com/shop/men">Sports Shoes</a>
+                    <a href="https://www.myntra.com/shop/men">Active T-Shirts</a>
+                    <a href="https://www.myntra.com/shop/men">Track Pants & Shorts</a>
+                    <a href="https://www.myntra.com/shop/men">Tracksuits</a>
+                    <a href="https://www.myntra.com/shop/men">Jackets & Sweatshirts</a>
+                    <a href="https://www.myntra.com/shop/men">Sports Accessories</a>
+                    <a href="https://www.myntra.com/shop/men">Swimwear</a><hr style="width: 180px; background-color: grey; opacity: 0.5;">
+                    </div>
+                    <div style="width: 240px; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: 12px;font-weight: lighter; font-size: smaller; font-weight: lighter;">
+                    <a href="@" class="top" style="color:#fd6286; font-size: larger; font-weight: bold;">Gadgets</a>
+                        <a href="https://www.myntra.com/shop/men">Smart Wearables</a>
+                        <a href="https://www.myntra.com/shop/men">Fitness Gadgets</a>
+                        <a href="https://www.myntra.com/shop/men">Headphones</a>
+                        <a href="https://www.myntra.com/shop/men">Speakers</a>
+                    </div>
+                </div>
+
+                <!--Fifth Column of the Dropdown-->
+                <div style="width: 240px; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: 12px;font-weight: lighter; font-size: smaller; font-weight: lighter;">
+                    <div style="width: 240px; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: 12px;font-weight: lighter; font-size: smaller; font-weight: lighter;">
+                    <a href="@" class="top" style="color:#fd6286; font-size: larger; font-weight: bold;">Fashion Accessories</a>
+                    <a href="https://www.myntra.com/shop/men">Wallets</a>
+                    <a href="https://www.myntra.com/shop/men">Belts</a>
+                    <a href="https://www.myntra.com/shop/men">Perfumes & Body Mists</a>
+                    <a href="https://www.myntra.com/shop/men">Trimmers</a>
+                    <a href="https://www.myntra.com/shop/men">Deodorants</a>
+                    <a href="https://www.myntra.com/shop/men">Ties, Cufflinks & Pocket Squares</a>
+                    <a href="https://www.myntra.com/shop/men">Accessory Gift Sets</a>
+                    <a href="https://www.myntra.com/shop/men">Caps & Hats</a>
+                    <a href="https://www.myntra.com/shop/men">Mufflers, Scarves & Gloves</a>
+                    <a href="https://www.myntra.com/shop/men">Phone Cases</a>
+                    <a href="https://www.myntra.com/shop/men">Rings & Wristwear</a>
+                    <a href="https://www.myntra.com/shop/men">Helmets</a><hr style="width: 180px; background-color: grey; opacity: 0.5;">
+                    
+                    </div>
+                    <div style="width: 240px; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: 12px;font-weight: lighter; font-size: smaller; font-weight: lighter;">
+                    <a href="@" class="top" style="color:#fd6286; font-size: larger; font-weight: bold;">Bags & Backpacks</a><br>
+                    <a href="@" class="top" style="color:#fd6286; font-size: larger; font-weight: bold;">Luggages & Trolleys</a>
+                    </div>
+                </div>
+            </div>
+        </li>      
+        <li class="dropdown"><a href="https://www.myntra.com/shop/women">WOMEN</a>
+        </li>
+        <li class="dropdown"><a href="https://www.myntra.com/shop/kids">KIDS</a></li>
+        <li class="dropdown"><a href="https://www.myntra.com/shop/home-living">HOME</a></li>
+        <li class="dropdown"><a href="https://www.myntra.com/shop/beauty">BEAUTY</a></li>
+        <li class="dropdown"><a href="https://www.myntra.com/shop/fwd-women">GENZ</a></li>
+        <li class="dropdown"><a href="https://www.myntra.com/shop/home">STUDIO<sup style="color:#fd6286; font-size: 12px; margin-left: 3px;">NEW</sup></a></li>
+        <li class="dropdown"><span style="display: flex; position: absolute; left: 16px;"><svg width="16px" height="15px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M17.0392 15.6244C18.2714 14.084 19.0082 12.1301 19.0082 10.0041C19.0082 5.03127 14.9769 1 10.0041 1C5.03127 1 1 5.03127 1 10.0041C1 14.9769 5.03127 19.0082 10.0041 19.0082C12.1301 19.0082 14.084 18.2714 15.6244 17.0392L21.2921 22.707C21.6828 23.0977 22.3163 23.0977 22.707 22.707C23.0977 22.3163 23.0977 21.6828 22.707 21.2921L17.0392 15.6244ZM10.0041 17.0173C6.1308 17.0173 2.99087 13.8774 2.99087 10.0041C2.99087 6.1308 6.1308 2.99087 10.0041 2.99087C13.8774 2.99087 17.0173 6.1308 17.0173 10.0041C17.0173 13.8774 13.8774 17.0173 10.0041 17.0173Z" fill="#0F0F0F"></path> </g></svg></span><input placeholder="Search for products,brands and more" style="width: 380px; height: 32px;margin-left: 0px;padding-left: 40px; border-radius: 5px; border: solid 1px #F5F5F6;background-color: #F5F5F6;"></li>
+        <li class="dropdown" style="display: flex; justify-content: center; align-items: center; margin-left: 40px;"><a href="https://www.myntra.com/shop/men"><span style="position: relative; left: 4px; font-size: 20px; ">&#128100;</span>Profile</a></li>
+        <li class="dropdown"><a href="https://www.myntra.com/login?referer=https://www.myntra.com/wishlist"><span style="position: relative; left: 17px; font-size: 20px;"><svg width="23px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M8.96173 18.9109L9.42605 18.3219L8.96173 18.9109ZM12 5.50063L11.4596 6.02073C11.601 6.16763 11.7961 6.25063 12 6.25063C12.2039 6.25063 12.399 6.16763 12.5404 6.02073L12 5.50063ZM15.0383 18.9109L15.5026 19.4999L15.0383 18.9109ZM9.42605 18.3219C7.91039 17.1271 6.25307 15.9603 4.93829 14.4798C3.64922 13.0282 2.75 11.3345 2.75 9.1371H1.25C1.25 11.8026 2.3605 13.8361 3.81672 15.4758C5.24723 17.0866 7.07077 18.3752 8.49742 19.4999L9.42605 18.3219ZM2.75 9.1371C2.75 6.98623 3.96537 5.18252 5.62436 4.42419C7.23607 3.68748 9.40166 3.88258 11.4596 6.02073L12.5404 4.98053C10.0985 2.44352 7.26409 2.02539 5.00076 3.05996C2.78471 4.07292 1.25 6.42503 1.25 9.1371H2.75ZM8.49742 19.4999C9.00965 19.9037 9.55954 20.3343 10.1168 20.6599C10.6739 20.9854 11.3096 21.25 12 21.25V19.75C11.6904 19.75 11.3261 19.6293 10.8736 19.3648C10.4213 19.1005 9.95208 18.7366 9.42605 18.3219L8.49742 19.4999ZM15.5026 19.4999C16.9292 18.3752 18.7528 17.0866 20.1833 15.4758C21.6395 13.8361 22.75 11.8026 22.75 9.1371H21.25C21.25 11.3345 20.3508 13.0282 19.0617 14.4798C17.7469 15.9603 16.0896 17.1271 14.574 18.3219L15.5026 19.4999ZM22.75 9.1371C22.75 6.42503 21.2153 4.07292 18.9992 3.05996C16.7359 2.02539 13.9015 2.44352 11.4596 4.98053L12.5404 6.02073C14.5983 3.88258 16.7639 3.68748 18.3756 4.42419C20.0346 5.18252 21.25 6.98623 21.25 9.1371H22.75ZM14.574 18.3219C14.0479 18.7366 13.5787 19.1005 13.1264 19.3648C12.6739 19.6293 12.3096 19.75 12 19.75V21.25C12.6904 21.25 13.3261 20.9854 13.8832 20.6599C14.4405 20.3343 14.9903 19.9037 15.5026 19.4999L14.574 18.3219Z" fill="#000000"></path> </g></svg></span><br>Wishlist</a></li>
+        <li class="dropdown"><a href="https://www.myntra.com/checkout/cart"><span><svg width="23px" height="25px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M8.25 7.00151L8.25 6C8.25 3.92893 9.92893 2.25 12 2.25C14.0711 2.25 15.75 3.92893 15.75 6V7L15.75 7.00151C18.4344 7.0136 19.8606 7.1222 20.6606 8.09803C21.5608 9.19607 21.2287 10.8563 20.5646 14.1767L19.9646 17.1767C19.5029 19.4856 19.272 20.6401 18.4425 21.32C17.6131 22 16.4358 22 14.0812 22H9.9188C7.56417 22 6.38686 22 5.55742 21.32C4.72799 20.6401 4.4971 19.4856 4.03532 17.1767L3.43532 14.1767C2.77123 10.8563 2.43919 9.19607 3.33936 8.09803C4.13936 7.12219 5.56562 7.0136 8.25 7.00151ZM9.75 6C9.75 4.75736 10.7574 3.75 12 3.75C13.2426 3.75 14.25 4.75736 14.25 6V7H9.75V6ZM15 11C15.5523 11 16 10.5523 16 10C16 9.44772 15.5523 9 15 9C14.4477 9 14 9.44772 14 10C14 10.5523 14.4477 11 15 11ZM9.99998 10C9.99998 10.5523 9.55226 11 8.99998 11C8.44769 11 7.99998 10.5523 7.99998 10C7.99998 9.44772 8.44769 9 8.99998 9C9.55226 9 9.99998 9.44772 9.99998 10Z" fill="#000000"></path> </g></svg></span>Bag</a></li>
+    </ul>
+    </nav>
+    <div><img src="/Myntra.png" style="position: absolute;top: 85px; left: 0px; z-index: -2;"></div>
+</body>
+</html>

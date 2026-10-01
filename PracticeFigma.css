@@ -1,0 +1,175 @@
+*{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: bold;
+}
+.container  {
+    display:flex;
+    /* border: 2px black solid; */
+    padding-top: 25px;
+}
+.aside{
+    background-color: white;
+    /* border: 2px black solid; */
+    width: 260px;
+    height: 100vh;
+    position: absolute;top: 0px; left: 0px; bottom: 0px;
+}
+body{
+    background-color: #e1e1e1;
+    display: flex;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+li{
+    list-style-type: none;
+}
+.plus{
+    border: 2px solid grey;
+    color: grey;
+    height: 24px;width: 24px;
+    border-radius: 50%;
+    display: flex;
+    font-size: larger;
+    font-weight: bolder;
+    justify-content: center;align-items:center;
+    position: relative;top: -20px; left: 150px;
+}
+.icon-frame{
+    /* border: 2px black solid; */
+    width: inherit;
+    position: relative; left: -20px;
+    font-weight: bolder;
+    font-size: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.growth{
+    font-size: 12px;
+    position: relative;top: -45px;left: 73px;
+}
+.icon{
+    height: 60px;width: 60px;
+    border-radius: 50%;
+    border: black 3px double;
+    position: relative  ;top: 38px; left: -5px;
+    /* background-color: linear-gradient(
+        blue 50%,
+        yellow 50%
+    ); */
+    background-image:url(/RW.png);
+}
+.schedule{
+    border: 2px grey solid;border-radius: 15px;
+    width: 50px; height: 20px;
+    position: relative;
+    left: 130px; top: -23px;
+    display: flex;justify-content: center;align-items: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 300;color: grey;font-size: 12px;
+}
+.profile{
+    height: 50px; width: 50px;
+    border: 3px solid orange;
+    border-radius: 50%;
+    display: flex;
+    background-image: url(/shadow_100x100.png);
+}
+.profiles{
+    display: flex;
+    position: relative;
+    left: 300px;
+    gap: 30px;
+}
+.cards{
+    /* border: 2px solid black; */
+    width: 700px;
+    height: 70px;
+    position: absolute; top: 165px; left: 300px;
+    display: flex;
+    justify-content: center;
+    gap: 45px;
+    padding: 10px;
+}
+.card{
+    border: 1px solid black;
+    height: 65px;
+    width: 200px;
+    border-radius: 12px;
+    background-image:url(/back.png);
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    line-height: 30px;
+    padding-left: 20px;
+    color: white;
+}
+.texts{
+    font-size: 8px;
+    position: relative;
+    top: 58px;
+}
+.image{
+    border-radius: 50%;
+    width: 100px; height: 100px;
+    border: 2px solid black;
+    position: absolute;
+    right: 110px;
+    background-image: url(/shadow_100x100.png);
+    top: 100px;
+}
+.rightaside{
+    width: 350px;
+    height: 100vh;
+    position: absolute;right: 0px;top: 0px;
+    background-color: white;
+}
+.p{
+    color: grey;
+    position: relative;top: -10px;left: -15px;
+    font-size: 15px;
+}
+.stats{
+    font-size: 25px;
+}
+.p3{
+    color: grey;
+    font-size: 15px;
+    position: relative;
+    top: -8px;
+}
+.rcont{
+    position: absolute;
+    top: 0px;
+
+}
+.Analytics{
+    position: absolute;
+    top: 270px; left: 320px;
+}
+.footerUl{
+    position: relative;
+    top: 60px;
+    left: 30px;
+    color: grey;
+}
+.buttonsinRight{
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    align-items: top;
+    padding-left: 65px;
+    position: relative;top: -20px;
+}
+.btn1{
+    padding: 10px 20px;
+    color: #fefeff;
+    background-color:#4842B6;
+    border-radius: 5px;
+}
+.btn2{
+    padding: 10px 20px;
+    color: #000000;
+    border-radius: 5px;
+
+}

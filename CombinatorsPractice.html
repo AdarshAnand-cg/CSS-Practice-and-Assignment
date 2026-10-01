@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    
+        .container{
+            width: 800px;
+            height: 400px;
+            border: 10px groove gold; 
+        }
+        .container>img{
+            display: none;
+            width:800px;
+            height: inherit;
+            
+            border-radius: 100px;
+            background-color: gold;
+            
+        }
+        .container:hover>img{
+            display: block;
+            cursor: pointer;
+        
+        }
+        .container+img{
+            display: none;
+        }
+        .container:hover+img{
+            display: inline;
+            cursor: pointer;
+            border: 10px solid lightcoral;
+            border-radius: 50%;
+            margin-left: 100px;
+            transition: 2sec ease-out;
+            transform: rotateY(180deg);
+            display: relative;
+            inset: 0;
+        }
+        #name:focus{
+            box-shadow: 50px 50px 10px;
+            background-color: aquamarine;
+            transition: 3s ease-in;
+            margin-left: 100px;
+            margin-right: 500px;
+            padding-left: 50px;
+            font-family: chiller;
+            font-size: 40px;
+            font-weight: bolder;
+            font-style: italic;
+            text-decoration: underline;
+            transform: rotateY(10deg);
+            
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container" style="background-color: gold;">
+        <img src="../Practice Folder/lkitchen.png" alt="Kitchen";>
+    </div>
+    <!-- <img src="/Doom vs Thor.jpg"> -->
+    <img src="../CSS/BackgroundImage.png" style="position: absolute; top: 10px; left: 727px;">
+    <form>
+        
+        <input type="text" style="width: 400px; height: 50px; border-radius: 50px; border: 5px groove gold;" id="name">
+    </form>
+    
+</body>
+</html>

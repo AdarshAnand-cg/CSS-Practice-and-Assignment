@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            height: 300px;
+            width:200px;
+            border:groove gold;
+            width: 700px;
+            height: 500px;
+
+
+        }
+        .container:hover::before{
+            content: "This Is A Image of Kitchen Items Of Country Delight Products";
+            padding: 14px;
+            color: brown;
+            font-family: chiller;
+            font-size: 35px;
+            font-weight: bolder;
+            position: relative;
+            top: 450px;
+        }
+        .container img{
+            display: none;
+        }
+        .container:hover>img{
+            display: block;
+            width: inherit;
+            height: 400px;
+        
+        }
+        .container:hover::after{
+            content: "";
+        }
+        img{
+            border: 50%;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="/Practice Folder/lkitchen.png" title="Hello" , height="300px">
+    </div>
+    
+</body>
+</html>

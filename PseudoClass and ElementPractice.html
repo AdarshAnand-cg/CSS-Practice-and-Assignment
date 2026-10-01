@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .ul li:nth-child(2n){
+            background-color: bisque;
+            color: brown;
+            font-family: jokerman;
+            font-size: 24px;
+
+
+        }
+        .ul li:nth-child(2n+1){
+            background-color: brown;
+            color: bisque;
+            font-family: jokerman;
+            font-size: 24px;
+        }
+        .ul li:hover::after{
+            content:"★" ;
+        }
+        ol:hover{
+            border: 40px groove brown;
+            transform: rotateY(180);
+            transition: 6sec ease-in;
+            margin-top: 150px;
+            background-color: rgb(252, 235, 0);
+            cursor: url(../next.png);
+        }
+        
+        .p::first-line{
+            color: rgb(93, 0, 254);
+            
+            text-decoration: overline;
+        }
+        .p::first-letter{
+            color: red;
+            font-size: 50px;
+            font-family: chiller;
+            font-weight: bolder;
+            font-style: oblique;
+            text-decoration: none;
+            
+            
+
+        }
+        [title*=" "]{
+        
+            color: red;
+            font-size: larger;
+            font-weight: bolder;
+            text-decoration: overline;
+
+        }
+        [placeholder$="e"]{
+            color: aqua;
+            background-color: bisque;
+            border: 4px groove rgb(65, 3, 3);
+        
+        }
+        .hr{
+            background-color: blue;
+            position: relative;
+            height: 100px;
+            width: 100px;
+            border-radius: 50%;
+        }
+        hr{
+            height: 100px;
+            
+        }
+        .h1{
+            
+        }
+
+
+    </style>
+</head>
+<body>
+    <ol>
+        <li style="font-family: algerian;font-size: 30px;
+        color: rgb(111, 0, 255);">Programming Language</li>
+        <ul class="ul" type="square">
+            <li>Python</li>
+            <li>Java</li>
+            <li>C</li>
+            <li>Cpp</li>
+            <li>JavaScript</li>
+            <li>Go</li>
+            <li>Python 2</li>
+            <li>TypeScript</li>
+            <li>Rust</li>
+        </ul>
+    </ol>
+    <label for="button" title=" ">Name</label><br><hr>
+    <input type="text" title="Hello" style="width: auto;" placeholder="Enter Your Name">
+    <a href="https://meet.google.com/wvn-ppov-tmo" title="meeting Link">Meeting Link</a>
+    <div><p class="p" ><ins>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis corporis libero quam incidunt maiores. Iure eum voluptas alias vitae error?</ins> </p></div>
+    <hr class="h1"><hr class="h2"><hr class="h3">
+</body>
+</html>

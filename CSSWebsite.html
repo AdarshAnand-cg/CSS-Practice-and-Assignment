@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Agency</title>
+    <link rel="icon" href="https://img.magnific.com/premium-vector/traveling-logo-design_745595-734.jpg?semt=ais_hybrid&w=740&q=80">
+
+    <style>
+        body{background-color: #04a492;
+            margin: auto;
+            
+        }
+        .main{width: 1200px;
+            height:625px;
+            background-color: #d6d9d0 ;
+            margin: auto;
+            margin-top: 40px;
+            padding: 20px;
+        
+
+        }
+        .navbar{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+
+        }
+        .A{
+            margin-left: 20px;
+        
+        }
+        .A:hover{
+            text-shadow: black 5px 5px 10px;
+        }
+    
+        .B{
+
+            font-size: 13px;
+            font-weight: bold;
+            position: relative;
+            /* top: 40px; */
+        }
+        .B:hover{
+            text-shadow: 1px 1px 1px black;
+        }
+        .C{
+            font-size: 12px;
+            font-weight: bold;
+            position: relative;
+            /* top: 40px; */
+            display: flex;
+            gap: 30px;
+        }
+        .C:hover{
+            text-shadow: 1px 1px 1px black;
+        }
+        .text{color:#122644 ;
+            font-size: 30px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            padding-top: 90px;
+            padding-left: 10px;
+        }
+        .text>p{
+            font-size: 15px;
+            color: #222d3b;
+            font-family: Arial, Helvetica, sans-serif;  
+        }
+        #btn{border-radius: 25px;
+            color: white;
+            font-size: 17px;
+            font-weight: bold;
+            background-color:#f74752 ;
+            padding-left: 50px;
+            padding-right: 50px;
+            padding-bottom: 10px;
+            padding-top: 10px;
+        }
+        #btn:hover{
+            background-color: #f7f7f7;
+            color: #f74752;
+            border-radius: 10px;
+            cursor: pointer;
+            box-shadow: #f67981 2px 2px 12px;
+        }
+        .card1{
+            margin-top: -290px;
+            margin-left: 390px;
+            
+        }
+        .card2{
+            margin-top: -540px;
+            margin-left: 657px;
+            position: relative;
+            top: 40px;  
+        }
+        .card3{
+            display: block;
+            position: relative;
+            margin-top: -370px;
+            margin-left: 927px;  
+        }
+        h3,span{
+            color: white;
+        }
+        img{
+            cursor: pointer;
+        }
+        img:hover{
+            box-shadow: 2px 2px 8px;
+            position: relative;
+        }
+        .h1:hover{
+            font-weight: bolder;
+            font-style: italic;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            size: 40px;
+            cursor:grab;
+        }
+        p:hover{
+            text-decoration: underline;
+            cursor: help;
+        }
+        .footer-center{
+            position: relative;
+            top: -30px;
+            color: black;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+        .footer-right{
+            position: relative;
+            top: -70px;
+            left: 1060px;
+            font-family: algerian;
+            color: black;
+
+        }
+        .previous{
+            border: 2px solid black; border-radius: 50%;
+            width: 25px; height: 25px;
+            position: relative; top: -40px; left: 50px;
+            display: flex; justify-content: center; align-items: center;
+            cursor: pointer;
+        }
+        .previous:hover{
+            background-color: black;
+            border: white 2px solid;
+            color: white;
+            border-radius: 10px;
+            width: 30px; height: 30px;
+            font-size: larger;
+            font-weight: bolder;
+            position: absolute;top:-10px;
+            display: flex; justify-content: center; align-items: center;
+        }
+        .next{
+            border: 2px solid black;
+            border-radius: 50%;
+            width: 25px; height: 25px;
+            position:absolute; top: -4px; left: 100px;
+            display: flex; justify-content: center; align-items: center; 
+            cursor: pointer;
+        }
+        .next:hover{
+            background-color: black;
+            border: white 2px solid;
+            color: white;
+            border-radius: 10px;
+            width: 30px; height: 30px;
+            font-size: larger;
+            font-weight: bolder;
+            position: absolute;top:-10px;
+            display: flex; justify-content: center; align-items: center;
+            
+        }
+        [src]:hover{
+            border: 1px groove rgb(255, 255, 255);
+
+        }
+        .p{
+            position: relative;
+            left: -20px;
+        }
+    </style>
+</head>
+<body>
+    
+<!--Complete Page -->
+<div class="main">
+    <div class="navbar">
+        <div class="A"><h1>travel.</h1></div>
+        
+        <div class="B">
+            <a href="" style="color: rgb(110, 110, 110); text-decoration: none; font-family:sans-serif; position: relative; top: -10px">CARD SLIDER FOR WORDPRESS</a>
+        </div>
+        <div class="C">
+            <a href="" style="color: rgb(110, 110, 110); text-decoration: none; font-family:sans-serif; ">ABOUT</a>
+            <a href="" style="color: rgb(110, 110, 110); text-decoration: none; font-family:sans-serif;">CONTACT</a>
+        </div>
+    </div>
+
+    <div class="text">
+        <h1 class="h1">Must see <br>Places</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. <br> Nobis ex quos temporibus dolorum magnam oloribus.</p>
+
+        <button id="btn">Explore</button>
+    </div>
+
+
+    
+    <!-- Card--1 -->
+    <div class="card1">
+        <img src="https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=500&q=80" alt="Turkey" width="253" height="370" style="border-radius: 20px;">
+        <h3 style="position: relative; top: -100px; left: 10px;">Cappadocia</h3>
+        <span style="position: relative; top: -120px; left: 5px;">📍TURKEY</span>
+    </div>
+    <!-- Card--2 -->
+    <div class="card2">
+        <img src="https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=500&q=80" alt="Santorini" width="256" height="370" style="border-radius: 20px;  cursor: pointer;">
+        <h3 style="position: relative; top: -100px; left: 10px;">Santorini</h3>
+        <span style="position: relative; top: -120px; left: 5px;">📍GREECE</span>
+    </div>
+    <!-- Card--3 -->
+    <div class="card3">
+        <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=500&q=80" alt="Bali" width="256" height="370" style="border-radius: 20px;">
+        <h3 style="position: relative; top: -100px; left: 10px;">Bali</h3>
+        <span style="position: relative; top: -120px; left: 5px;">📍INDONESIA</span>
+    </div>
+    <div class="footer-center">UNIQUE DESTINATIONS</div>
+    <div class="footer-right">
+        <p class="p">01 / 03</p>
+        <div class="previous">&leftarrow;</div>
+        <div class="next" >&RightArrow;</div>
+    </div>
+</div>
+</body> 
+</html>

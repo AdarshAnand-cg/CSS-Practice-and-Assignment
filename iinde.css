@@ -1,0 +1,46 @@
+#NAV {
+   display: flex;
+   
+   justify-content: center;
+   align-items: center;
+   gap: 260px;
+   background-color: rgb(255, 255, 255);
+   margin-top: 0px;
+   box-shadow: black 40px;
+   
+
+}
+.main {
+       display: flex;
+      gap: 50px;
+      text-align: center;
+      text-decoration: none;
+}
+.logo{
+
+    display: flex;
+   
+}
+
+.other{
+   gap: 10px;
+   display: flex;
+   text-decoration: none;
+}
+
+.GG {
+   text-decoration: none;
+   color: black;
+
+}
+
+body{
+    
+    background-image:url(/CSS/style.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-top: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    background-size: 50% 50;
+}
