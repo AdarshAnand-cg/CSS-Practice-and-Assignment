@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pure CSS Page Transitions</title>
+  <style>
+    /* ===================================================
+       1. Global Reset & Ambient Background
+       =================================================== */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      height: 100vh;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #0b0f19;
+      color: #ffffff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Ambient animated floating circles */
+    .blob {
+      position: absolute;
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.35;
+      animation: float 7s ease-in-out infinite alternate;
+      z-index: 0;
+    }
+    .blob-1 {
+      background: #4f46e5;
+      top: 15%;
+      left: 20%;
+    }
+    .blob-2 {
+      background: #06b6d4;
+      bottom: 15%;
+      right: 20%;
+      animation-delay: -3.5s;
+    }
+
+    @keyframes float {
+      from { transform: translateY(0) scale(1); }
+      to { transform: translateY(30px) scale(1.1); }
+    }
+
+    /* ===================================================
+       2. Hidden Radio Inputs (Controls Navigation)
+       =================================================== */
+    input[type="radio"] {
+      display: none;
+    }
+
+    /* ===================================================
+       3. Main Card Container & Entrance Animation
+       =================================================== */
+    .container {
+      position: relative;
+      width: 440px;
+      height: 320px;
+      z-index: 1;
+      animation: cardEntrance 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes cardEntrance {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ===================================================
+       4. Pages Setup & Slide Transitions
+       =================================================== */
+    .page {
+      position: absolute;
+      inset: 0;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(16px);
+      border-radius: 20px;
+      padding: 36px 30px;
+      text-align: center;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      /* Smooth transition curve */
+      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+                  opacity 0.6s ease,
+                  filter 0.6s ease;
+    }
+
+    .icon-badge {
+      display: inline-block;
+      font-size: 32px;
+      margin-bottom: 12px;
+      animation: bounce 2s infinite ease-in-out;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+
+    h1 {
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    p {
+      font-size: 14px;
+      color: #94a3b8;
+      line-height: 1.5;
+      margin-bottom: 24px;
+    }
+
+    /* ===================================================
+       5. Standard Pure CSS Button with Shine Effect
+       =================================================== */
+    .btn {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 13px 28px;
+      font-size: 15px;
+      font-weight: 600;
+      color: #ffffff;
+      background: linear-gradient(135deg, #4f46e5, #06b6d4);
+      border-radius: 12px;
+      cursor: pointer;
+      user-select: none;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(6, 182, 212, 0.3);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    /* Hover lift & glow */
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(6, 182, 212, 0.5);
+    }
+
+    /* Click press effect */
+    .btn:active {
+      transform: scale(0.96);
+    }
+
+    /* Subtle light sweep animation on hover */
+    .btn::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -130%;
+      width: 60%;
+      height: 100%;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.35),
+        transparent
+      );
+      transform: skewX(-20deg);
+      transition: left 0.6s ease;
+    }
+
+    .btn:hover::after {
+      left: 140%;
+    }
+
+    /* Secondary button style for Back button */
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: none;
+    }
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.18);
+      box-shadow: none;
+    }
+
+    /* ===================================================
+       6. The CSS State Switching Logic
+       =================================================== */
+
+    /* When Page 1 is active */
+    #radio-page1:checked ~ .container #page1 {
+      transform: translateX(0);
+      opacity: 1;
+      filter: blur(0px);
+      pointer-events: auto;
+    }
+    #radio-page1:checked ~ .container #page2 {
+      transform: translateX(110%);
+      opacity: 0;
+      filter: blur(4px);
+      pointer-events: none;
+    }
+
+    /* When Page 2 is active (after clicking the button) */
+    #radio-page2:checked ~ .container #page1 {
+      transform: translateX(-110%);
+      opacity: 0;
+      filter: blur(4px);
+      pointer-events: none;
+    }
+    #radio-page2:checked ~ .container #page2 {
+      transform: translateX(0);
+      opacity: 1;
+      filter: blur(0px);
+      pointer-events: auto;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background Blobs -->
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+
+  <!-- Pure CSS Controllers (Hidden Radio Buttons) -->
+  <input type="radio" name="page-switch" id="radio-page1" checked />
+  <input type="radio" name="page-switch" id="radio-page2" />
+
+  <div class="container">
+    
+    <!-- PAGE 1 (Home) -->
+    <section class="page" id="page1">
+      <div class="icon-badge"></div>
+      <h1>Home Screen</h1>
+      <p>Click the button below to trigger the transition without a single line of JavaScript.</p>
+      
+      <!-- Label acts as the button, checking #radio-page2 when clicked -->
+      <label for="radio-page2" class="btn">
+        Open Next Page &rarr;
+      </label>
+    </section>
+
+    <!-- PAGE 2 (Destination) -->
+    <section class="page" id="page2">
+      <div class="icon-badge"></div>
+      <h1>Second Screen</h1>
+      <p>Transition completed using pure CSS sibling selectors and transforms.</p>
+      
+      <!-- Label acts as back button, checking #radio-page1 when clicked -->
+      <label for="radio-page1" class="btn btn-secondary">
+        &larr; Back to Home
+      </label>
+    </section>
+
+  </div>
+
+</body>
+</html>
