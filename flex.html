@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card</title>
+    <style>
+        body{
+            background-image: repeating-radial-gradient(white,grey,rgb(49, 49, 49),brown,blue);
+        }
+        .main{
+            display: flex;
+            gap: 40px;
+            flex-wrap: wrap;
+            width:900px;
+            height: 100vh;
+            margin: auto;
+            /* align-content: center; */
+            justify-content: center;
+            
+        }
+        .one{
+            border:2px solid black;
+            height: 550px; width: 270px;
+            box-shadow: red 0px 0px 10px;
+        }
+        .two{
+            border:2px solid black;
+            height: 590px; width: 270px;
+            box-shadow: red 0px 0px 10px;
+            flex-basis: 4;
+
+        }
+        h2{
+            display: flex;
+            padding-left: 20px;
+            font-size: 30px;
+        }
+        p{
+            padding-left: 20px;
+        }
+        .button{
+            margin-left: 10%;
+            height: 40px;width: 200px;
+        }
+        @media all and (max-width:900px) {
+        .main{
+            display: flex;
+            gap: 40px;
+            flex-wrap: wrap;
+            width: 100vw;
+            }
+        }
+        @media all and (max-width:400px) {
+        .main{
+            display: flex;
+            margin-top: 200px;
+            gap: 40px;
+            flex-wrap: wrap;
+            width: 100vw;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="one">
+            <img src="/shadow.png" width="270px">
+            <h2>Seamlessly Visualize quality</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae sed laborum accusamus laboriosam aliquam eos quae rerum blanditiis, itaque dolore id in suscipit error aliquid quaerat ipsa autem exercitationem ab.</p>
+                <button class="button"> Here's why</button>
+        </div>
+        <div class="two" >
+            <img src="/shadow.png" width="270px">
+            <h2>Dynamically innovate supply chains</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae sed laborum accusamus laboriosam aliquam eos quae rerum blanditiis, itaque dolore id in suscipit error aliquid quaerat ipsa autem exercitationem ab</p>
+            <button class="button">Click Here</button>
+        </div>
+        <div class="one">
+            <img src="/shadow.png" width="270px">
+            <h2>Seamlessly Visualize quality</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae sed laborum accusamus laboriosam aliquam eos quae rerum blanditiis, itaque dolore id in suscipit error aliquid quaerat ipsa autem exercitationem ab</p>
+            <button class="button">Click Here</button>
+        </div>
+        <div class="one">
+            <img src="/shadow.png" width="270px">
+            <h2>Seamlessly Visualize quality</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae sed laborum accusamus laboriosam aliquam eos quae rerum blanditiis, itaque dolore id in suscipit error aliquid quaerat ipsa autem exercitationem ab.</p>
+                <button class="button"> Here's why</button>
+        </div>
+        <div class="two" >
+            <img src="/shadow.png" width="270px">
+            <h2>Dynamically innovate supply chains</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae sed laborum accusamus laboriosam aliquam eos quae rerum blanditiis, itaque dolore id in suscipit error aliquid quaerat ipsa autem exercitationem ab</p>
+            <button class="button">Click Here</button>
+        </div>
+        <div class="one">
+            <img src="/shadow.png" width="270px">
+            <h2>Seamlessly Visualize quality</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae sed laborum accusamus laboriosam aliquam eos quae rerum blanditiis, itaque dolore id in suscipit error aliquid quaerat ipsa autem exercitationem ab</p>
+            <button class="button">Click Here</button>
+        </div>
+
+    </div>
+</body>
+</html>

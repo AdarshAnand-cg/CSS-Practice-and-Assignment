@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    .div1 {
+        width: 100px;
+        height: 100px;
+        background-color: #8e44ad;
+        color: white;
+        padding: 10px;
+        transition-property: width, background-color; /* Transition width and background-color */
+        transition-duration: 0.5s;
+}
+    .div1:hover {
+            width: 150px;
+            background-color: #27ae60;
+            transition:ease-in-out;
+
+    }
+    .transition-timing-example2 {
+        width: 100px;
+        height: 100px;
+        background-color: #8d5524;
+        color: white;
+        padding: 10px;
+        opacity: 1;
+        transition:2s  ease-in-out;
+        
+    }
+        
+    .transition-timing-example2:hover {
+        transform: skewX(100deg) skewY(120deg) translate(100px);
+        transform: scale3d(5,5,0) rotateX(45deg) translateX(75px);
+        background-color: aquamarine;
+        color: black;
+}
+    .perspective-parent {
+        perspective: 200px;
+        }
+    .rotatez-example1 {
+        transform: rotateZ(0deg);
+        width: 100px;
+        height: 100px;
+        background-color: #c1e410;
+        color: white;
+        padding: 10px;
+        transition: ease-in-out 2s;
+    }
+        .rotatez-example1:hover {
+        transform: rotateZ(360deg);
+        width: 100px;
+        height: 100px;
+        background-color: #27ae60;
+        color: white;
+        padding: 10px;
+        border-radius: 50%;
+}
+.div{
+    background-color: bisque;
+    border-radius: 50%;
+    height: 60px;width: 60px;
+    display: flex;justify-content: center;align-items: center;
+    transition:linear 4s;
+
+}
+.d{
+    display: flex;
+    gap: 130px;
+    margin-top: 40px;
+}
+.d:hover>.div{
+    transform:translateX(2000px) rotate(7200deg) ;
+    transition-duration: 8s;
+}
+.line{
+    background-color: wheat;width: 260px;position: relative;top: -120px;left: 400px; height: 100px;
+    background-color: aqua;
+    transition:linear 4s;
+    display: flex;justify-content: center;align-items: center;
+    border-top-left-radius: 100%;
+    border-top-right-radius: 1900%;
+}
+.line:hover{
+    transform: translateX(2000px);
+    transition-duration: 8s;
+}
+@keyframes fade {
+    from{ opacity: 0;}
+    to { opacity: 1;}
+    
+}
+
+.spin{
+    width: 600px; height: 200px;
+    background-image: linear-gradient(rgb(255, 94, 0)20%,
+    white,green);
+    color: rgb(252, 252, 255);
+    padding: 10px;
+    animation: fade 2s linear infinite;
+    animation-delay: 2s;
+}
+.spin:hover{
+    color: blue;
+    width: 1000px; height: 400px;
+    transition: 2s ease-out;
+    font-family: algerian;
+    font-size: 70px;
+    display: flex;align-items: center;justify-content: center;
+    margin-top: -200px;
+    position: relative; 
+    
+}
+@keyframes colorChange{
+    0%{background-color: rgb(23, 23, 23);}
+
+}
+.line{
+    /* width: 600px; height: 200px; */
+    /* background-image: linear-gradient(rgb(255, 94, 0)20%, */
+    /* white,green); */
+    color: rgb(252, 252, 255);
+    padding: 10px;
+    animation:   colorChange 1s ease-in-out infinite;
+    animation-delay: 0s;
+    animation-direction: reverse;
+}
+@keyframes slowSlide {
+  from { transform: translateX(500px); }
+  to { transform: translateX(0); }
+}
+.animation-duration-example2 {
+    width: 100px;
+    height: 100px;
+    background-color: #1abc9c;
+    color: white;
+    padding: 10px;
+    animation-name: slowSlide;
+    animation-duration: 2s; /* Slow 2s animation */
+    animation-iteration-count: infinite;
+    animation-fill-mode: both;
+    animation-direction: reverse;
+
+}
+@keyframes scaleBouncy {
+    from { transform: scale(1); }
+    to { transform: scale(1.01); }
+}
+.animation-timing-example2 {
+    width: 100px;
+    height: 100px;
+    background-color: #8d5524;
+    color: white;
+    padding: 10px;
+    animation-name: scaleBouncy;
+    animation-duration: 0.5s;
+    animation-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55); /* Bouncy effect */
+    animation-iteration-count: infinite;
+    align-items: center;
+    display: flex;
+}
+@keyframes slideShort {
+    from { transform: translateX(500px); }
+    to { transform: translateX(0); }
+}
+@keyframes scaleShort {
+    from { transform: scale(0.8); }
+    to { transform: scale(1); }
+}
+.animation-example2 {
+    width: 100px;
+    height: 100px;
+    background-color: #e74c3c;
+    color: white;
+    padding: 10px;
+    animation: slideShort 0.5s ease, scaleShort 0.5s linear 0.1s; /* Two animations with different timings */
+    animation-iteration-count: infinite;
+}
+@keyframes  {
+    
+}
+.mains{
+    background-image: repeating-linear-gradient(gold,silver);
+    border: #1abc9c groove 10px;
+    width: 100vw;height: 500px;
+}
+
+.first{
+    background-color: black;
+    height: 100px;width: 100px;
+}
+.second{
+    background-color: black;
+    height: 100px;width: 100px;
+    display: flex;
+    position: relative;top: 100px;
+}
+.third{
+    background-color: black;
+    height: 100px;width: 100px;
+    display: flex;
+}
+    </style>
+</head>
+<body style="background-color: black;">
+    <nav>
+        <div class="perspective-parent">
+  <div class="rotatez-example1">Rotated 45 degrees around z-axis</div>
+</div>
+<div class="animation-timing-example2">Bouncy scale animation</div>
+        <div></div>
+    </nav>
+    <body>
+    <div class="animation-example2">Slide and scale with shorthand</div>
+        <main>
+        <div class="div1">Hover to change width and color</div>
+        <div class="transition-timing-example2">Hover for custom bezier opacity change</div>
+    
+    <div class="d">
+        <div class="line">Hello World</div>
+        <div class="div">M</div>
+        <div class="div" style="position: relative;">M</div>
+        <!-- <div class="line">Hello World</div> -->
+        <!-- <div class="div">M</div> -->
+        <!-- <div class="div" style="position: relative;">M</div> -->
+
+    </div>
+   
+    </main>
+    <div class="spin">India</div>
+    <div class="animation-duration-example2">Slow slide animation</div>
+    <div class="mains">
+        <div class="first"></div>
+        <div class="second"></div>
+        <div class="third"></div>
+    </div>
+
+    </body>
+</body>
+</html>

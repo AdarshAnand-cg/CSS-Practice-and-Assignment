@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            font-size: 20px;
+        }
+        @keyframes colorChange {
+            50%{background-color: rgb(22, 1, 44);}
+            50%{color: rgb(255, 230, 0);}
+            
+        }
+        body{
+            background-color: rgb(79, 39, 1);
+            animation: colorChange 10s ease-in-out infinite;
+            color: white;
+        }
+        .div{
+            display: flex;
+            border: 6px solid rgb(255, 187, 0);
+            height: 100px;width: 100px;
+            justify-content: center;
+            align-items: center;
+            margin: 5px;
+            padding: 10px;
+            flex-shrink: 3;
+            
+        }
+        .div1{
+            display: flex;
+            border: 6px solid rgb(255, 187, 0);
+            height: 100px;width: 100px;
+            justify-content: center;
+            align-items: center;
+            margin: 5px;
+            padding: 10px;
+            order: 4;
+            flex-shrink: 3;
+            flex-basis: 5;
+        }
+        .div2{
+            display: flex;
+            border: 6px solid rgb(255, 187, 0);
+            height: 100px;width: 100px;
+            justify-content: center;
+            align-items: center;
+            margin: 5px;
+            padding: 10px;
+            order: 1;
+            flex-grow: 3;
+        }
+        .main :nth-child(2n+1){
+            background-color: aqua;
+        }
+        .main :nth-child(2n){
+            background-color: rgb(166, 255, 0);
+        }
+        
+        .main{
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: center;
+            align-items: center;
+            border: 6px groove rgb(251, 255, 0);
+            width:760px;height: 600px;
+            flex-wrap: wrap;
+            margin: auto;
+
+            
+        }
+        .Lorem{
+            text-transform: capitalize;
+            font-family: chiller;
+            font-weight: bolder;
+            font-size: larger;
+            border: 30px groove gold;
+            /* border-radius: 30%; */
+            display: flex;
+            flex-wrap: wrap;
+            /* width: fit-content;height:fit-content; */
+            width: 1000px;height: 600px;
+            /* padding: 100px; */
+            margin: auto;
+            letter-spacing: 1px;
+            word-spacing: 4px;
+            align-items: center;
+            justify-content: center;
+            /* align-content: space-between; */
+            overflow:auto;
+            
+        }
+        .lor{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="div1">1</div>
+        <div class="div2">2</div>
+        <div class="div">3</div>
+        <div class="div">4</div>
+        <div class="div">5</div>
+        <div class="div">6</div>
+        <div class="div">7</div>
+        <div class="div">8</div>
+        <div class="div">9</div>
+        <div class="div">10</div>
+        <div class="div">11</div>
+        <div class="div">12</div>
+        <div class="div">13</div>
+        <div class="div">14</div>
+        <div class="div">15</div>
+    </div>
+    <div class="lor">
+        <div class="Lorem">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Qui ut iste repellat? Molestiae ad necessitatibus harum dolore modi aspernatur ducimus corrupti expedita. Ratione accusamus aliquid rem. Explicabo, non reiciendis? Aliquid saepe quas autem libero iusto, soluta corporis omnis totam quod optio a nobis culpa nam placeat? Quaerat, placeat facere ducimus aliquid officia officiis recusandae aperiam quidem accusamus deserunt? Laboriosam quia quidem vel consectetur debitis odio et minus. Sapiente laudantium consequatur vel quos sint praesentium repellat, provident mollitia quidem et voluptatum id nesciunt magni explicabo ab. Neque, veritatis tenetur placeat odit sunt quas quos minima, dolorem, ipsa officiis nihil sit veniam! Quibusdam, et. Delectus excepturi, eveniet impedit beatae corporis dignissimos, repellendus rem voluptate est, blanditiis enim dolorum minima dolorem! Consequatur est quod voluptatem eveniet deleniti, asperiores distinctio facere totam assumenda harum et quam debitis, ducimus necessitatibus ad, sint modi consectetur molestias. Dolor ipsum quod sequi porro nisi. Perferendis soluta, voluptas consequuntur blanditiis assumenda eos deleniti quidem repellat error ipsum atque, maiores officia? Reiciendis laboriosam, alias aliquid expedita voluptate rerum blanditiis ullam! Voluptatem alias, quod odio eaque voluptate molestiae temporibus earum incidunt perspiciatis fugit necessitatibus sed tenetur architecto adipisci eius doloribus facilis asperiores velit. Enim neque ut est recusandae incidunt cum molestias. Et, ipsum neque commodi similique reiciendis velit fuga debitis soluta, ipsa dicta asperiores sed. Rem illum voluptate sit omnis veritatis inventore est magni corrupti hic praesentium maxime aut itaque eos laudantium amet laborum earum quo unde, iusto quaerat et dicta. Molestias quos sed excepturi quasi aliquid officiis dolorem commodi quaerat ipsum laboriosam error, magni accusantium quibusdam optio dolorum odio vitae necessitatibus reiciendis labore neque! Sapiente ipsa delectus quae expedita officiis accusamus praesentium eum perferendis commodi tempora quos nisi quibusdam sint, dolorum amet optio consequuntur consectetur provident repellendus fugiat voluptates libero explicabo. Laboriosam aut reprehenderit dolor inventore ipsam nulla aliquam ut.</div>
+    </div>
+</body>
+</html>
