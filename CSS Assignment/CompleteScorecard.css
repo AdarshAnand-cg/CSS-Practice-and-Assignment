@@ -1,6 +1,3 @@
- body{
-            scale: 0.9;
-        }
         * {
             margin: 0;
             padding: 0;
@@ -8,8 +5,9 @@
         }
 
         body {
-            background-color: rgb(84, 70, 43);
+            background-image: linear-gradient(orangered,white,green);
             font-family: Arial, sans-serif;
+            scale: 0.9;
         }
 
         .container {
@@ -20,6 +18,7 @@
             background-image: url(/India\ Cricket\ Team\ Victory\ Celebration.png);
             background-size: cover;
             border-radius: 5px;
+            box-shadow: blue 0px 0px 30px;
         }
         svg{
             position: relative;
@@ -28,6 +27,10 @@
         }
         .icc{
              text-shadow: 2px 2px 5px black;
+        }
+        .icc:hover{
+            background-image: linear-gradient(orangered,white,green);
+            color: blue;
         }
 
      
@@ -58,7 +61,6 @@
             width: 70%;
             border-collapse: collapse;
             margin-left: 30px;
-
             background-color: white;
         }
         tbody td:nth-child(2n){
@@ -68,6 +70,15 @@
         .head {
             background-color: #f05136;
             color: white;
+        }
+        .head:hover{
+            background-image: linear-gradient(orangered,white,green);
+            color: blue;
+            border: none;
+        }
+        div:hover table:hover {
+            border: orangered 2px solid;
+            box-shadow: 2px 2px 40px black;
         }
 
         .head th {
@@ -95,8 +106,6 @@
         .head2 .batsman {
             text-align: left;
         }
-
-        /* Players */
         .body td {
             padding: 12px 10px;
             text-align: right;
@@ -113,8 +122,7 @@
         .player{
             color: #3c8aef;
         }
-
-        /* Footer */
+        
         .foot td {
             padding: 12px 10px;
             border-bottom: 1px solid #ddd;
@@ -127,7 +135,6 @@
             font-weight: bold;
         }
 
-        /* Responsive */
         @media screen and (max-width: 650px) {
 
             .container {
