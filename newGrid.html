@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grid main</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 20px;
+      background-image: repeating-linear-gradient(
+            to right,
+            yellow 0px,
+            orange 25px,
+            rgb(247, 94, 94) 50px);
+      opacity:0.6;
+
+    };
+    .main>div:hover body{
+        background-color: yellow;
+    }
+
+    .main {
+      display: grid;
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto;
+      height: 600px;
+      gap: 5px;
+      padding: 5px;
+      background-color: blueviolet;
+      grid-template-columns: 85fr 88fr 87fr 163fr;
+      grid-template-rows: 49fr 33fr 53fr 60fr 95fr;
+      grid-template-areas:
+        "one one two three"
+        "one one two four"
+        "one one five five"
+        "six seven five five"
+        "six seven eight eight";
+    }
+    .main div:hover{
+        color: white;
+        background-color: rgb(247, 4, 4);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 40px;
+    }
+
+    .main div {
+      background-color: black;
+      border: 2px solid black;
+      color: white;
+    }
+
+    .one{ 
+        grid-area: one;
+    }
+    .two{ 
+        grid-area: two; 
+    }
+    .three { 
+        grid-area: three; 
+    }
+    .four { 
+        grid-area: four; }
+
+    .five{ 
+        grid-area: five; 
+    }
+    .six{ 
+        grid-area: six; 
+    }
+    .seven{ 
+        grid-area: seven; 
+    }
+    .eight{ 
+        grid-area: eight; 
+    }
+
+    @media (max-width: 700px) {
+      .main {
+        max-width: 300px;
+        grid-template-columns: 78fr 25fr 91fr;
+        grid-template-rows: 70fr 45fr 87fr 91fr;
+        grid-template-areas:
+          "one three three"
+          "one four four"
+          "five five five"
+          "six six seven";
+      }
+
+      .two,
+      .eight {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="main">
+    <div class="one">1</div>
+    <div class="two">2</div>
+    <div class="three">3</div>
+    <div class="four">4</div>
+    <div class="five">5</div>
+    <div class="six">6</div>
+    <div class="seven">7</div>
+    <div class="eight">8</div>
+  </div>
+</body>
+</html>
