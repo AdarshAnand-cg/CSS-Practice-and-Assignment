@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    /* @keyframes colorChange {
+            50%{background-color: rgb(0, 0, 0);}
+            50%{color: rgb(255, 230, 0);}
+            
+        } */
+        body{
+            background-color: rgb(45, 14, 14);
+            animation: colorChange 1s ease-in-out infinite;
+            color: white;
+        }
+    body:hover{
+        background-color: rgb(1, 80, 7);
+    }
+    .container{
+        display: grid;
+        gap: 1px 1px;
+        height: fit-content;
+        width: fit-content;
+        grid-template-columns: 130px 100px 100px 100px 100px 90px 200px ;
+        grid-template-rows:70px 50px 50px  50px 50px 50px;
+        border: 5px dotted black;
+        outline: 5px double black;
+        padding: 2px;
+
+    }
+    .container:hover{
+        background-image: repeating-radial-gradient(white,gray,white,gray,white,gray,white,gray,white,gray,white,gray);
+    }
+    .child{
+        border: 4px double rgb(52, 52, 52); 
+        display: flex;
+        justify-content: center;
+        align-items: center;     
+    }
+    .cont{
+        display: grid;
+        margin-top: 30px;
+        gap: 10px 20px;
+        justify-content:safe;
+        align-items: safe;
+        border: 2px black solid;
+        height: 50vh;
+        padding: 10px;
+        background-color: ghostwhite;
+        grid-template-areas:
+         "sidebar navbar navbar navbar" 
+         "sidebar navbar navbar navbar"
+         "sidebar content footer footer"
+         "sidebar content footer footer"
+         "sidebar content heroimage heroimage"
+         "sidebar content heroimage heroimage"
+         "foot foot foot foot"
+         "foot foot foot foot"
+        ;
+    }
+    .cont:hover{
+        background-color:khaki;
+        
+    }
+    .navbar{
+        grid-area: navbar;
+        background-color: aqua;
+    }
+    .navbar:hover,.sidebar:hover,.heroimage:hover,.content:hover,.foot:hover,.footer:hover{
+        background-color: rgb(250, 68, 234);
+    }
+    .sidebar{
+        grid-area: sidebar;
+        background-color: blueviolet;
+    
+    }
+    .heroimage{
+        grid-area: heroimage;
+        background-color: yellow;
+    }
+    .content{
+        grid-area: content;
+        background-color: red;
+
+    }
+    .footer{
+        grid-area: footer;
+        background-color: chartreuse;
+    }
+    .foot{
+        grid-area: foot;
+        background-color: rgb(0, 38, 255);
+    }
+    .cont>div{
+        border: 2px black solid;
+        display: grid;
+        justify-content: center;
+        align-items: center;
+    }
+    .main{
+        display : grid;
+        grid-template: "Header Header Header" 100px
+            "Heroimage Heroimage Sidebar" 200px
+            "Heroimage Heroimage Sidebar" 100px
+            "Content Content Sidebar" 100px
+            "Foot Foot Sidebar" 100px;
+        border: 20px black solid;
+        height: fit-content;
+        color: white;
+        font-weight: bolder;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        font-size: 30px;
+        /* opacity: 0.5; */
+        /* visibility:hidden; */
+    }
+    .main > div{
+        display: grid;
+        justify-content: center;
+        align-items: center;
+    }
+    .Header{
+        grid-area: Header;
+        background-color: rgb(164, 174, 55);
+    }
+    .Header:hover,.Sidebar:hover,.Heroimage:hover,.Content:hover,.Foot:hover{
+        background-color: rgb(0, 0, 0);
+        border: 2px white ;
+    }
+    .Sidebar{
+        grid-area: Sidebar;
+        background-color: rgb(77, 40, 28);
+    
+    }
+    .Heroimage{
+        grid-area: Heroimage;
+        background-color: rgb(103, 50, 139);
+    }
+    .Content{
+        grid-area: Content;
+        background-color: rgb(23, 163, 140);
+
+    }
+    .Foot{
+        grid-area: Foot;
+        background-color: rgb(142, 106, 22);
+    }
+    .repeat{
+        display: grid;
+        grid-template-columns: repeat(4,1fr);
+        grid-template-rows: repeat(2,150px);
+        border: 8px double white;
+        background-color:black;
+        border-left-style: dotted;
+        border-radius: 10%;
+        border-right-style: dashed;
+        justify-content: stretch;
+        align-content: center;
+    }
+    .repeat > div{
+        border: 5px ridge gray;
+        border-radius: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .number{
+        display: grid;
+        grid-template-areas: 
+        "one one two three three " 
+         "one one two eight eight"
+         "one one six six six"
+         "four five six six six" 
+         "four five six six six"
+         "four five seven seven seven"
+         "four five seven seven seven"
+         "four five seven seven seven";
+    }
+    .number > div {
+        border: 2px solid black;
+        padding: 20px;
+    }
+    .one{
+        grid-area: one;
+    }
+     .one{
+        grid-area: one;
+    }
+     .one{
+        grid-area: one;
+    }
+     .two{
+        grid-area: two;
+    }
+     .three{
+        grid-area: three;
+    }
+     .four{
+        grid-area: four;
+    }
+     .five{
+        grid-area: five;
+    }
+     .six{
+        grid-area: six;
+    }
+     .seven{
+        grid-area: seven;
+    }
+     .eight{
+        grid-area: eight;
+    }
+    
+</style>
+<body>
+    <div class="container">
+        <div class="child"><h2>Students<br>Name</h1></div>
+        <div class="child"><h2>Science</h2></div>
+        <div class="child"><h2>Maths</h2></div>
+        <div class="child"><h2>S.St</h2></div>
+        <div class="child"><h2>English</h2></div>
+        <div class="child"><h2>Hindi</h2></div>
+        <div class="child"><h2>Total Marks</h2></div>
+        <div class="child"><h4>Ravi Kumar</h4></div>
+        <div class="child"><h4>95</h4></div>
+        <div class="child"><h4>91</h4></div>
+        <div class="child"><h4>78</h4></div>
+        <div class="child"><h4>19</h4></div>
+        <div class="child"><h4>100</h4></div>
+        <div class="child"><h4>95+91+78+19+100</h4></div>
+        <div class="child"></div>
+        <div class="child"></div>
+        <div class="child"></div>
+        <div class="child"></div>
+        <div class="child"></div>
+        <div class="child"></div>
+        <div class="child"></div>
+        <div class="child"></div>
+        <div class="child"></div>
+        <div class="child"></div>
+        <div class="child"></div>
+        <div class="child"></div>
+        <div class="child"></div>
+        <div class="child"></div>
+        <div class="child"></div>
+        <div class="child"></div>
+        <div class="child"></div>
+        <div class="child"></div>
+        <div class="child"></div>
+        <div class="child"></div>
+        <div class="child"></div>
+        <div class="child"></div>
+        <div class="child"></div>
+        <div class="child"></div>
+        <div class="child"></div>
+        <div class="child"></div>
+        <div class="child"></div>
+        <div class="child"></div>
+    </div>
+    <div class="cont">
+        <div class="navbar">Navbar</div>
+        <div class="heroimage">Content</div>
+        <div class="sidebar">Sidebar</div>
+        <div class="content">Hero Image</div>
+        <div class="footer">Content</div>
+        <div class="foot">Footer</div>
+    </div>
+    <div class="main">
+        <div class="Header">Header</div>
+        <div class="Heroimage">Heroimage</div>
+        <div class="Sidebar">Sidebar</div>
+        <div class="Content">Content</div>
+        <div class="Foot">Footer</div>
+    </div>
+    <!-- <div class="repeat">
+        <div>Lorem</div>
+        <div>Ipsum</div>
+        <div>Dolor</div>
+        <div>Sit</div>
+        <div>Amet</div>
+        <div>Qudi</div>
+        <div>Modi</div>
+        <div>Modi</div>
+    </div> -->
+    <div class="number">
+        <div class="one">1</div>
+        <div class="two">2</div>
+        <div class="three">3</div>
+        <div class="four">4</div>
+        <div class="five">5</div>
+        <div class="six">6</div>
+        <div class="seven">7</div>
+        <div class="eight">8</div>
+    </div> 
+</body>
+</html>

@@ -1,91 +1,2065 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+
+    <title>YouTube</title>
+
+    <link rel="icon"
+        href="https://www.youtube.com/s/desktop/a6171d17/img/favicon_96x96.png">
+
     <style>
-        *{
+
+        /* =========================
+           MAIN
+        ========================= */
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
             color: white;
         }
-        body{
-            background-color: black;
+
+        body {
+            background-color: #0f0f0f;
+            font-family: Arial, Helvetica, sans-serif;
+            overflow-x: hidden;
         }
-        .aside{
-            width: 200px;
+
+        button,
+        input {
+            font-family: inherit;
         }
-        .aside>ul li{
-            padding: 10px;
+
+        button {
+            cursor: pointer;
         }
-        .aside ul li:hover{
-            background-color: rgb(82, 82, 82);
-            
+
+
+        /* =========================
+           SIDEBAR
+        ========================= */
+
+        .aside {
+            width: 240px;
+            height: 100vh;
+
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 20;
+
+            padding: 0 12px 20px;
+
+            background-color: #0f0f0f;
+
+            overflow-y: auto;
+
+            scrollbar-width: thin;
+            scrollbar-color: #555 transparent;
         }
+
+        .sidebar-header {
+            height: 65px;
+
+            display: flex;
+            align-items: center;
+
+            gap: 20px;
+
+            padding: 0 8px;
+        }
+
+        .menu-button {
+            width: 38px;
+            height: 38px;
+
+            flex-shrink: 0;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border: none;
+            border-radius: 50%;
+
+            background-color: transparent;
+        }
+
+        .menu-button:hover {
+            background-color: #272727;
+        }
+
+        .menu-button img {
+            width: 24px;
+            height: 24px;
+
+            object-fit: contain;
+        }
+
+        .youtube-logo {
+            width: 105px;
+            height: auto;
+
+            object-fit: contain;
+        }
+
+
+        /* SIDEBAR LIST */
+
+        .sidebar-list {
+            list-style: none;
+            padding: 8px 0;
+        }
+
+        .sidebar-item {
+            min-height: 42px;
+
+            padding: 0 12px;
+
+            display: flex;
+            align-items: center;
+
+            gap: 24px;
+
+            border-radius: 10px;
+
+            font-size: 14px;
+
+            cursor: pointer;
+
+            white-space: nowrap;
+        }
+
+        .sidebar-item:hover {
+            background-color: #272727;
+        }
+
+        .sidebar-item.active {
+            background-color: #272727;
+            font-weight: bold;
+        }
+
+
+        /* SIDEBAR ICON */
+
+        .sidebar-icon {
+            width: 24px;
+            height: 24px;
+
+            flex-shrink: 0;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .sidebar-icon img {
+            width: 23px;
+            height: 23px;
+
+            object-fit: contain;
+        }
+
+
+        /* DIVIDER */
+
+        .sidebar-divider {
+            border: none;
+            border-top: 1px solid #303030;
+
+            margin: 12px 0;
+        }
+
+
+        /* SUBSCRIPTION HEADING */
+
+        .sidebar-heading {
+            padding: 12px;
+
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+
+        /* CHANNEL AVATAR */
+
+        .sidebar-avatar {
+            width: 25px;
+            height: 25px;
+
+            flex-shrink: 0;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background-color: #454545;
+
+            font-size: 12px;
+        }
+
+
+        /* =========================
+           MAIN CONTENT
+        ========================= */
+
+        .main-content {
+            min-width: 0;
+
+            margin-left: 240px;
+        }
+
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        .navbar {
+            height: 65px;
+
+            position: fixed;
+
+            top: 0;
+            left: 240px;
+            right: 0;
+
+            z-index: 15;
+
+            display: flex;
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 24px;
+
+            padding: 0 28px;
+
+            background-color: #0f0f0f;
+        }
+
+
+        /* SEARCH */
+
+        .search-area {
+            width: 100%;
+            max-width: 720px;
+
+            min-width: 0;
+
+            flex: 1;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            margin: 0 auto;
+        }
+
+        .search-form {
+            min-width: 0;
+
+            flex: 1;
+
+            display: flex;
+            align-items: center;
+        }
+
+        .search {
+            width: 100%;
+            min-width: 0;
+
+            height: 42px;
+
+            padding: 0 18px;
+
+            background-color: #121212;
+
+            border: 1px solid #303030;
+            border-right: none;
+
+            border-radius: 22px 0 0 22px;
+
+            outline: none;
+
+            font-size: 16px;
+        }
+
+        .search:focus {
+            border-color: #315b9a;
+        }
+
+
+        /* SEARCH BUTTON */
+
+        .search-button {
+            width: 64px;
+            height: 42px;
+
+            flex-shrink: 0;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background-color: #222222;
+
+            border: 1px solid #303030;
+
+            border-radius: 0 22px 22px 0;
+        }
+
+        .search-button:hover {
+            background-color: #383838;
+        }
+
+
+        /* SEARCH ICON */
+
+        .search-icon {
+            width: 17px;
+            height: 17px;
+
+            position: relative;
+
+            border: 2px solid white;
+
+            border-radius: 50%;
+        }
+
+        .search-icon::after {
+            content: "";
+
+            width: 7px;
+            height: 2px;
+
+            position: absolute;
+
+            right: -5px;
+            bottom: -3px;
+
+            background-color: white;
+
+            transform: rotate(45deg);
+        }
+
+
+        /* MICROPHONE */
+
+        .mic {
+            width: 42px;
+            height: 42px;
+
+            flex-shrink: 0;
+
+            margin-left: 14px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border: none;
+
+            border-radius: 50%;
+
+            background-color: #272727;
+        }
+
+        .mic:hover {
+            background-color: #3f3f3f;
+        }
+
+        .mic img {
+            width: 22px;
+            height: 22px;
+
+            object-fit: contain;
+        }
+
+
+        /* =========================
+           NAVBAR ACTIONS
+        ========================= */
+
+        .navbar-actions {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+
+            gap: 12px;
+
+            flex-shrink: 0;
+        }
+
+        .nav-action {
+            min-width: 40px;
+            height: 40px;
+
+            padding: 0 12px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            gap: 7px;
+
+            border: none;
+
+            border-radius: 20px;
+
+            background-color: transparent;
+
+            font-size: 14px;
+        }
+
+        .nav-action:hover {
+            background-color: #272727;
+        }
+
+        .nav-action img {
+            width: 23px;
+            height: 23px;
+
+            object-fit: contain;
+        }
+
+
+        /* CREATE */
+
+        .create-plus {
+            display: flex;
+            align-items: center;
+        }
+
+
+        /* PROFILE */
+
+        .profile {
+            width: 34px;
+            height: 34px;
+
+            flex-shrink: 0;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background-color: #2878c8;
+
+            font-weight: bold;
+        }
+
+
+        /* =========================
+           RECOMMENDATION BAR
+        ========================= */
+
+        .recommendation-wrapper {
+            height: 58px;
+
+            position: fixed;
+
+            top: 65px;
+            left: 240px;
+            right: 0;
+
+            z-index: 12;
+
+            background-color: #0f0f0f;
+        }
+
+        .recommendation {
+            height: 100%;
+
+            padding: 0 24px;
+
+            display: flex;
+            align-items: center;
+
+            gap: 12px;
+
+            overflow-x: auto;
+            overflow-y: hidden;
+
+            white-space: nowrap;
+
+            scrollbar-width: none;
+        }
+
+        .recommendation::-webkit-scrollbar {
+            display: none;
+        }
+
+        .recommendation button {
+            height: 34px;
+
+            padding: 0 14px;
+
+            flex-shrink: 0;
+
+            border: none;
+
+            border-radius: 8px;
+
+            background-color: #272727;
+
+            font-size: 14px;
+        }
+
+        .recommendation button:hover {
+            background-color: #3f3f3f;
+        }
+
+        .recommendation button.active {
+            background-color: white;
+            color: #0f0f0f;
+        }
+
+
+        /* =========================
+           VIDEOS
+        ========================= */
+
+        .videos {
+            width: 100%;
+
+            padding: 145px 24px 40px;
+        }
+
+        .row1 {
+            width: 100%;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, minmax(0, 1fr));
+
+            column-gap: 18px;
+
+            row-gap: 38px;
+        }
+
+        .video-card {
+            width: 100%;
+
+            min-width: 0;
+
+            cursor: pointer;
+        }
+
+
+        /* =========================
+           THUMBNAIL
+        ========================= */
+
+        .thumbnail-wrapper {
+            width: 100%;
+
+            aspect-ratio: 16 / 9;
+
+            position: relative;
+
+            overflow: hidden;
+
+            border-radius: 12px;
+
+            background-color: #272727;
+        }
+
+        .thumbnail {
+            display: block;
+
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+        }
+
+
+        /* VIDEO DURATION */
+
+        .video-duration {
+            position: absolute;
+
+            right: 7px;
+            bottom: 7px;
+
+            padding: 3px 5px;
+
+            border-radius: 4px;
+
+            background-color: rgba(0, 0, 0, 0.85);
+
+            font-size: 12px;
+
+            font-weight: bold;
+        }
+
+
+        /* =========================
+           VIDEO INFORMATION
+        ========================= */
+
+        .video-info {
+            display: flex;
+            align-items: flex-start;
+
+            gap: 12px;
+
+            padding-top: 12px;
+        }
+
+
+        /* CHANNEL ICON */
+
+        .channel-avatar {
+            width: 36px;
+            height: 36px;
+
+            flex-shrink: 0;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background-color: #303030;
+
+            font-size: 14px;
+
+            font-weight: bold;
+        }
+
+
+        /* VIDEO DETAILS */
+
+        .video-details {
+            min-width: 0;
+
+            flex: 1;
+        }
+
+        .video-title {
+            overflow: hidden;
+
+            overflow-wrap: anywhere;
+
+            font-size: 15px;
+
+            font-weight: 600;
+
+            line-height: 1.45;
+        }
+
+        .channel-name {
+            margin-top: 5px;
+        }
+
+        .channel-name,
+        .video-stats {
+            color: #aaa;
+
+            font-size: 13px;
+
+            line-height: 1.7;
+        }
+
+
+        /* VIDEO MENU */
+
+        .video-menu {
+            width: 22px;
+            height: 28px;
+
+            flex-shrink: 0;
+
+            border: none;
+
+            background-color: transparent;
+
+            font-size: 19px;
+        }
+
+
+        /* =========================
+           LAPTOP
+        ========================= */
+
+        @media (max-width: 1450px) {
+
+            .row1 {
+                grid-template-columns:
+                    repeat(3, minmax(0, 1fr));
+
+                column-gap: 18px;
+
+                row-gap: 32px;
+            }
+
+            .navbar {
+                padding: 0 20px;
+
+                gap: 15px;
+            }
+
+            .navbar-actions {
+                gap: 5px;
+            }
+        }
+
+
+        /* =========================
+           SMALL LAPTOP
+        ========================= */
+
+        @media (max-width: 1050px) {
+
+            .aside {
+                width: 200px;
+            }
+
+            .main-content {
+                margin-left: 200px;
+            }
+
+            .navbar {
+                left: 200px;
+            }
+
+            .recommendation-wrapper {
+                left: 200px;
+            }
+
+            .row1 {
+                grid-template-columns:
+                    repeat(2, minmax(0, 1fr));
+
+                column-gap: 16px;
+
+                row-gap: 30px;
+            }
+
+            .videos {
+                padding-left: 18px;
+                padding-right: 18px;
+            }
+
+            .create-label {
+                display: none;
+            }
+        }
+
+
+        /* =========================
+           TABLET
+        ========================= */
+
+        @media (max-width: 760px) {
+
+            .aside {
+                width: 72px;
+
+                padding: 0 5px;
+            }
+
+            .sidebar-header {
+                justify-content: center;
+
+                padding: 0;
+            }
+
+            .youtube-logo {
+                display: none;
+            }
+
+            .sidebar-item {
+                min-height: 65px;
+
+                padding: 8px 2px;
+
+                flex-direction: column;
+
+                justify-content: center;
+
+                gap: 5px;
+
+                font-size: 10px;
+
+                text-align: center;
+
+                white-space: normal;
+            }
+
+            .sidebar-divider,
+            .sidebar-heading {
+                display: none;
+            }
+
+            .main-content {
+                margin-left: 72px;
+            }
+
+            .navbar {
+                left: 72px;
+
+                padding: 0 12px;
+
+                gap: 10px;
+            }
+
+            .recommendation-wrapper {
+                left: 72px;
+            }
+
+            .recommendation {
+                padding: 0 14px;
+
+                gap: 9px;
+            }
+
+            .navbar-actions {
+                gap: 3px;
+            }
+
+            .optional-action {
+                display: none;
+            }
+
+            .videos {
+                padding: 140px 14px 30px;
+            }
+
+            .video-info {
+                gap: 9px;
+            }
+
+            .channel-avatar {
+                width: 32px;
+                height: 32px;
+            }
+
+            .video-title {
+                font-size: 14px;
+            }
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 520px) {
+
+            .aside {
+                display: none;
+            }
+
+            .main-content {
+                margin-left: 0;
+            }
+
+            .navbar {
+                left: 0;
+
+                height: 58px;
+
+                padding: 0 12px;
+
+                gap: 8px;
+            }
+
+            .recommendation-wrapper {
+                top: 58px;
+
+                left: 0;
+
+                height: 52px;
+            }
+
+            .recommendation {
+                padding: 0 12px;
+
+                gap: 8px;
+            }
+
+            .recommendation button {
+                height: 32px;
+
+                padding: 0 12px;
+
+                font-size: 13px;
+            }
+
+            .search-area {
+                justify-content: flex-end;
+            }
+
+            .search {
+                height: 38px;
+
+                padding: 0 10px;
+
+                font-size: 14px;
+            }
+
+            .search-button {
+                width: 40px;
+
+                height: 38px;
+            }
+
+            .mic {
+                width: 36px;
+                height: 36px;
+
+                margin-left: 7px;
+            }
+
+            .create-button {
+                display: none;
+            }
+
+            .profile {
+                width: 30px;
+                height: 30px;
+
+                font-size: 13px;
+            }
+
+            .videos {
+                padding: 122px 12px 25px;
+            }
+
+            .row1 {
+                grid-template-columns:
+                    minmax(0, 1fr);
+
+                row-gap: 28px;
+            }
+
+            .thumbnail-wrapper {
+                border-radius: 10px;
+            }
+
+            .video-info {
+                padding-top: 10px;
+
+                gap: 12px;
+            }
+
+            .channel-avatar {
+                width: 36px;
+                height: 36px;
+            }
+
+            .video-title {
+                font-size: 15px;
+            }
+        }
+
     </style>
 </head>
+
+
 <body>
-    <div>
-        <div class="aside">
-            <ul>
-                <li>Home</li>
-                <li>Explore</li>
-                <li>Shorts</li>
-                <li>Subscription</li><hr>
-                <li>Library</li>
-                <li>History</li>
-                <li>Your videos</li>
-                <li><img src="Assets/Assets 2/watch_later.png" width="15px"> Watch later</li>
-                <li>Liked videos</li>
-                <li>Show more</li><hr>
-            </ul>
-            <ul><li>SUBSCRIPTION</li>
-                <ul>
-                <li>Nadir On The Go</li>
-                <li>Coke Studio Bangla</li>
-                </ul>
-            </ul>
+
+
+    <!-- =========================
+         SIDEBAR
+    ========================= -->
+
+    <aside class="aside">
+
+        <div class="sidebar-header">
+
+            <button class="menu-button" aria-label="Menu">
+
+                <img
+                    src="assets/hambarger.png"
+                    alt="Menu">
+
+            </button>
+
+
+            <img
+                class="youtube-logo"
+                src="assets/Youtube logo.png"
+                alt="YouTube Logo">
+
         </div>
-        <div>
-            <div class="navbar">
-                <div class="search"></div>
-                <div class="mic"></div>
-                <div class="left-of-navbar"></div>
+
+
+        <!-- MAIN SIDEBAR -->
+
+        <ul class="sidebar-list">
+
+            <li class="sidebar-item active">
+
+                <span class="sidebar-icon">
+
+                    <img
+                        src="assets/home.png"
+                        alt="Home">
+
+                </span>
+
+                <span>Home</span>
+
+            </li>
+
+
+            <li class="sidebar-item">
+
+                <span class="sidebar-icon">
+
+                    <img
+                        src="assets/explore.png"
+                        alt="Explore">
+
+                </span>
+
+                <span>Explore</span>
+
+            </li>
+
+
+            <li class="sidebar-item">
+
+                <span class="sidebar-icon">
+
+                    <img
+                        src="assets/shorts.png"
+                        alt="Shorts">
+
+                </span>
+
+                <span>Shorts</span>
+
+            </li>
+
+
+            <li class="sidebar-item">
+
+                <span class="sidebar-icon">
+
+                    <img
+                        src="assets/subscription.png"
+                        alt="Subscriptions">
+
+                </span>
+
+                <span>Subscriptions</span>
+
+            </li>
+
+        </ul>
+
+
+        <hr class="sidebar-divider">
+
+
+        <!-- SECOND SIDEBAR -->
+
+        <ul class="sidebar-list">
+
+            <li class="sidebar-item">
+
+                <span class="sidebar-icon">
+
+                    <img
+                        src="assets/library.png"
+                        alt="Library">
+
+                </span>
+
+                <span>Library</span>
+
+            </li>
+
+
+            <li class="sidebar-item">
+
+                <span class="sidebar-icon">
+
+                    <img
+                        src="assets/history.png"
+                        alt="History">
+
+                </span>
+
+                <span>History</span>
+
+            </li>
+
+
+            <li class="sidebar-item">
+
+                <span class="sidebar-icon">
+
+                    <img
+                        src="assets/your_video.png"
+                        alt="Your videos">
+
+                </span>
+
+                <span>Your videos</span>
+
+            </li>
+
+
+            <li class="sidebar-item">
+
+                <span class="sidebar-icon">
+
+                    <img
+                        src="assets/watch_later.png"
+                        alt="Watch later">
+
+                </span>
+
+                <span>Watch later</span>
+
+            </li>
+
+
+            <li class="sidebar-item">
+
+                <span class="sidebar-icon">
+
+                    <img
+                        src="assets/liked.png"
+                        alt="Liked videos">
+
+                </span>
+
+                <span>Liked videos</span>
+
+            </li>
+
+
+            <li class="sidebar-item">
+
+                <span class="sidebar-icon">
+
+                    <img
+                        src="assets/down_arrow.png"
+                        alt="Show more">
+
+                </span>
+
+                <span>Show more</span>
+
+            </li>
+
+        </ul>
+
+
+        <hr class="sidebar-divider">
+
+
+        <!-- SUBSCRIPTIONS -->
+
+        <h3 class="sidebar-heading">
+            Subscriptions
+        </h3>
+
+
+        <ul class="sidebar-list">
+
+            <li class="sidebar-item">
+
+                <span class="sidebar-avatar">
+                    N
+                </span>
+
+                <span>
+                    Nadir On The Go
+                </span>
+
+            </li>
+
+<div class="profile"
+            <li class="sidebar-item">
+
+                <span class="sidebar-avatar">
+                    C
+                </span>
+
+                <span>
+                    Coke Studio Bangla
+                </span>
+
+            </li>
+
+        </ul>
+
+    </aside>
+
+
+
+    <!-- =========================
+         MAIN CONTENT
+    ========================= -->
+
+    <main class="main-content">
+
+
+        <!-- =========================
+             NAVBAR
+        ========================= -->
+
+        <header class="navbar">
+
+
+            <!-- SEARCH -->
+
+            <div class="search-area">
+
+                <form
+                    class="search-form"
+                    action="#"
+                    method="get">
+
+                    <input
+                        class="search"
+                        type="search"
+                        name="search"
+                        placeholder="Search"
+                        aria-label="Search">
+
+
+                    <button
+                        class="search-button"
+                        type="submit"
+                        aria-label="Search">
+
+                        <span class="search-icon"></span>
+
+                    </button>
+
+                </form>
+
+
+                <!-- MICROPHONE -->
+
+                <button
+                    class="mic"
+                    type="button"
+                    aria-label="Microphone">
+
+                    <img
+                        src="assets/mic.png"
+                        alt="Microphone">
+
+                </button>
+
             </div>
-            <div class="recommandation">
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
+
+
+
+            <!-- NAVBAR ACTIONS -->
+
+            <div class="navbar-actions">
+
+
+                <!-- CREATE -->
+
+                <button
+                    class="nav-action create-button"
+                    type="button">
+
+                    <span class="create-plus">
+
+                        <img
+                            src="assets/create.png"
+                            alt="Create">
+
+                    </span>
+
+                    <span class="create-label">
+                        Create
+                    </span>
+
+                </button>
+
+
+                <!-- MORE -->
+
+                <button
+                    class="nav-action create-button"
+                    type="button"
+                    aria-label="More">
+
+                    <span class="create-plus">
+
+                        <img
+                            src="assets/more.png"
+                            alt="More">
+
+                    </span>
+
+                </button>
+
+
+                <!-- NOTIFICATION -->
+
+                <button
+                    class="nav-action optional-action"
+                    type="button"
+                    aria-label="Notifications">
+
+                    <img
+                        src="assets/bell.png"
+                        alt="Notifications">
+
+                </button>
+
+
+                <!-- PROFILE -->
+
+                <div class="profile">
+                    R
+                </div>
+
             </div>
-            <div class="videos">
-                <div class="row2">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                </div>
-                <div class="row2">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                </div>
-                <div class="row3">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                </div>
+
+        </header>
+
+
+
+        <!-- =========================
+             RECOMMENDATIONS
+        ========================= -->
+
+        <nav class="recommendation-wrapper">
+
+            <div class="recommendation">
+
+                <button
+                    class="active"
+                    type="button">
+                    All
+                </button>
+
+                <button type="button">
+                    Coke Studio
+                </button>
+
+                <button type="button">
+                    UX
+                </button>
+
+                <button type="button">
+                    Case Study
+                </button>
+
+                <button type="button">
+                    Music
+                </button>
+
+                <button type="button">
+                    Bangla Lofi
+                </button>
+
+                <button type="button">
+                    Tour
+                </button>
+
+                <button type="button">
+                    Saintmartin
+                </button>
+
+                <button type="button">
+                    Tech
+                </button>
+
+                <button type="button">
+                    iPhone
+                </button>
+
+                <button type="button">
+                    User Interface
+                </button>
+
+                <button type="button">
+                    Computer
+                </button>
+
+                <button type="button">
+                    Gaming
+                </button>
+
+                <button type="button">
+                    Programming
+                </button>
+
+                <button type="button">
+                    Live
+                </button>
+
             </div>
-        </div>
-    </div>
-    
+
+        </nav>
+
+
+
+        <!-- =========================
+             VIDEOS
+        ========================= -->
+
+        <section class="videos">
+
+            <div class="row1">
+
+
+                <!-- VIDEO 1 -->
+
+                <article class="video-card">
+
+                    <div class="thumbnail-wrapper">
+
+                        <img
+                            class="thumbnail"
+                            src="assets/Thumbnail-8.png"
+                            alt="Bulbuli Coke Studio Bangla">
+
+                        <span class="video-duration">
+                            5:42
+                        </span>
+
+                    </div>
+
+
+                    <div class="video-info">
+
+                        <div class="channel-avatar">
+                            C
+                        </div>
+
+                        <div class="video-details">
+
+                            <h3 class="video-title">
+                                Bulbuli | Coke Studio Bangla | Season One | Ritu Raj X Nandita
+                            </h3>
+
+                            <p class="channel-name">
+                                Coke Studio Bangla
+                            </p>
+
+                            <p class="video-stats">
+                                12M views · 2 years ago
+                            </p>
+
+                        </div>
+
+                        <button
+                            class="video-menu"
+                            type="button"
+                            aria-label="More options">
+                            ⋮
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- VIDEO 2 -->
+
+                <article class="video-card">
+
+                    <div class="thumbnail-wrapper">
+
+                        <img
+                            class="thumbnail"
+                            src="assets/Thumbnail-9.png"
+                            alt="Infinix Note 12">
+
+                        <span class="video-duration">
+                            10:24
+                        </span>
+
+                    </div>
+
+
+                    <div class="video-info">
+
+                        <div class="channel-avatar">
+                            T
+                        </div>
+
+                        <div class="video-details">
+
+                            <h3 class="video-title">
+                                Infinix Note 12: AMOLED Display and Helio G88 Processor!
+                            </h3>
+
+                            <p class="channel-name">
+                                Technology Reviews
+                            </p>
+
+                            <p class="video-stats">
+                                245K views · 1 year ago
+                            </p>
+
+                        </div>
+
+                        <button
+                            class="video-menu"
+                            type="button"
+                            aria-label="More options">
+                            ⋮
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- VIDEO 3 -->
+
+                <article class="video-card">
+
+                    <div class="thumbnail-wrapper">
+
+                        <img
+                            class="thumbnail"
+                            src="assets/Thumbnail-10.png"
+                            alt="UX Design Case Study">
+
+                        <span class="video-duration">
+                            8:16
+                        </span>
+
+                    </div>
+
+
+                    <div class="video-info">
+
+                        <div class="channel-avatar">
+                            U
+                        </div>
+
+                        <div class="video-details">
+
+                            <h3 class="video-title">
+                                My First UX Design Case Study — This Got Me My First Job
+                            </h3>
+
+                            <p class="channel-name">
+                                Design Studio
+                            </p>
+
+                            <p class="video-stats">
+                                86K views · 8 months ago
+                            </p>
+
+                        </div>
+
+                        <button
+                            class="video-menu"
+                            type="button"
+                            aria-label="More options">
+                            ⋮
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- VIDEO 4 -->
+
+                <article class="video-card">
+
+                    <div class="thumbnail-wrapper">
+
+                        <img
+                            class="thumbnail"
+                            src="assets/Thumbnail-11.png"
+                            alt="My Mix">
+
+                        <span class="video-duration">
+                            1:02:18
+                        </span>
+
+                    </div>
+
+
+                    <div class="video-info">
+
+                        <div class="channel-avatar">
+                            M
+                        </div>
+
+                        <div class="video-details">
+
+                            <h3 class="video-title">
+                                My Mix — Music to Listen to Anytime
+                            </h3>
+
+                            <p class="channel-name">
+                                Your Music Mix
+                            </p>
+
+                            <p class="video-stats">
+                                Updated today
+                            </p>
+
+                        </div>
+
+                        <button
+                            class="video-menu"
+                            type="button"
+                            aria-label="More options">
+                            ⋮
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- VIDEO 5 -->
+
+                <article class="video-card">
+
+                    <div class="thumbnail-wrapper">
+
+                        <img
+                            class="thumbnail"
+                            src="assets/Thumbnail-4.png"
+                            alt="UX Design">
+
+                        <span class="video-duration">
+                            12:35
+                        </span>
+
+                    </div>
+
+
+                    <div class="video-info">
+
+                        <div class="channel-avatar">
+                            A
+                        </div>
+
+                        <div class="video-details">
+
+                            <h3 class="video-title">
+                                UX Design — What Is It? A Beginner's Guide
+                            </h3>
+
+                            <p class="channel-name">
+                                AJ & Smart
+                            </p>
+
+                            <p class="video-stats">
+                                540K views · 2 years ago
+                            </p>
+
+                        </div>
+
+                        <button
+                            class="video-menu"
+                            type="button"
+                            aria-label="More options">
+                            ⋮
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- VIDEO 6 -->
+
+                <article class="video-card">
+
+                    <div class="thumbnail-wrapper">
+
+                        <img
+                            class="thumbnail"
+                            src="assets/Thumbnail-5.png"
+                            alt="Mombati Music">
+
+                        <span class="video-duration">
+                            4:56
+                        </span>
+
+                    </div>
+
+
+                    <div class="video-info">
+
+                        <div class="channel-avatar">
+                            D
+                        </div>
+
+                        <div class="video-details">
+
+                            <h3 class="video-title">
+                                Mombati | Mohon Sharif | Dhakaiya Dose
+                            </h3>
+
+                            <p class="channel-name">
+                                Bangla Music
+                            </p>
+
+                            <p class="video-stats">
+                                1.2M views · 1 year ago
+                            </p>
+
+                        </div>
+
+                        <button
+                            class="video-menu"
+                            type="button"
+                            aria-label="More options">
+                            ⋮
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- VIDEO 7 -->
+
+                <article class="video-card">
+
+                    <div class="thumbnail-wrapper">
+
+                        <img
+                            class="thumbnail"
+                            src="assets/Thumbnail-6.png"
+                            alt="Visa Free Travel">
+
+                        <span class="video-duration">
+                            14:08
+                        </span>
+
+                    </div>
+
+
+                    <div class="video-info">
+
+                        <div class="channel-avatar">
+                            T
+                        </div>
+
+                        <div class="video-details">
+
+                            <h3 class="video-title">
+                                48 Visa-Free Countries You Should Know About
+                            </h3>
+
+                            <p class="channel-name">
+                                Travel Explorer
+                            </p>
+
+                            <p class="video-stats">
+                                320K views · 6 months ago
+                            </p>
+
+                        </div>
+
+                        <button
+                            class="video-menu"
+                            type="button"
+                            aria-label="More options">
+                            ⋮
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- VIDEO 8 -->
+
+                <article class="video-card">
+
+                    <div class="thumbnail-wrapper">
+
+                        <img
+                            class="thumbnail"
+                            src="assets/Thumbnail-7.png"
+                            alt="Advanced Figma Tips">
+
+                        <span class="video-duration">
+                            9:43
+                        </span>
+
+                    </div>
+
+
+                    <div class="video-info">
+
+                        <div class="channel-avatar">
+                            F
+                        </div>
+
+                        <div class="video-details">
+
+                            <h3 class="video-title">
+                                14 Advanced Tips to Design Faster in Figma
+                            </h3>
+
+                            <p class="channel-name">
+                                Figma Tutorials
+                            </p>
+
+                            <p class="video-stats">
+                                190K views · 4 months ago
+                            </p>
+
+                        </div>
+
+                        <button
+                            class="video-menu"
+                            type="button"
+                            aria-label="More options">
+                            ⋮
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- VIDEO 9 -->
+
+                <article class="video-card">
+
+                    <div class="thumbnail-wrapper">
+
+                        <img
+                            class="thumbnail"
+                            src="assets/Thumbnail.png"
+                            alt="Hello World">
+
+                        <span class="video-duration">
+                            6:32
+                        </span>
+
+                    </div>
+
+
+                    <div class="video-info">
+
+                        <div class="channel-avatar">
+                            P
+                        </div>
+
+                        <div class="video-details">
+
+                            <h3 class="video-title">
+                                Hello World — Getting Started with Programming
+                            </h3>
+
+                            <p class="channel-name">
+                                Programming Basics
+                            </p>
+
+                            <p class="video-stats">
+                                45K views · 3 months ago
+                            </p>
+
+                        </div>
+
+                        <button
+                            class="video-menu"
+                            type="button"
+                            aria-label="More options">
+                            ⋮
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- VIDEO 10 -->
+
+                <article class="video-card">
+
+                    <div class="thumbnail-wrapper">
+
+                        <img
+                            class="thumbnail"
+                            src="assets/Thumbnail-1.png"
+                            alt="Technology">
+
+                        <span class="video-duration">
+                            11:20
+                        </span>
+
+                    </div>
+
+
+                    <div class="video-info">
+
+                        <div class="channel-avatar">
+                            T
+                        </div>
+
+                        <div class="video-details">
+
+                            <h3 class="video-title">
+                                Discover the Latest Technology and Innovations
+                            </h3>
+
+                            <p class="channel-name">
+                                Tech World
+                            </p>
+
+                            <p class="video-stats">
+                                98K views · 5 months ago
+                            </p>
+
+                        </div>
+
+                        <button
+                            class="video-menu"
+                            type="button"
+                            aria-label="More options">
+                            ⋮
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- VIDEO 11 -->
+
+                <article class="video-card">
+
+                    <div class="thumbnail-wrapper">
+
+                        <img
+                            class="thumbnail"
+                            src="assets/Thumbnail-2.png"
+                            alt="Gaming Highlights">
+
+                        <span class="video-duration">
+                            18:45
+                        </span>
+
+                    </div>
+
+
+                    <div class="video-info">
+
+                        <div class="channel-avatar">
+                            G
+                        </div>
+
+                        <div class="video-details">
+
+                            <h3 class="video-title">
+                                Gaming Highlights — Best Moments and Gameplay
+                            </h3>
+
+                            <p class="channel-name">
+                                Gaming Zone
+                            </p>
+
+                            <p class="video-stats">
+                                75K views · 2 weeks ago
+                            </p>
+
+                        </div>
+
+                        <button
+                            class="video-menu"
+                            type="button"
+                            aria-label="More options">
+                            ⋮
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- VIDEO 12 -->
+
+                <article class="video-card">
+
+                    <div class="thumbnail-wrapper">
+
+                        <img
+                            class="thumbnail"
+                            src="assets/Thumbnail-3.png"
+                            alt="Music Collection">
+
+                        <span class="video-duration">
+                            7:15
+                        </span>
+
+                    </div>
+
+
+                    <div class="video-info">
+
+                        <div class="channel-avatar">
+                            M
+                        </div>
+
+                        <div class="video-details">
+
+                            <h3 class="video-title">
+                                Music Collection — Songs for Every Mood
+                            </h3>
+
+                            <p class="channel-name">
+                                Music Collection
+                            </p>
+
+                            <p class="video-stats">
+                                210K views · 7 months ago
+                            </p>
+
+                        </div>
+
+                        <button
+                            class="video-menu"
+                            type="button"
+                            aria-label="More options">
+                            ⋮
+                        </button>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </section>
+
+    </main>
+
 </body>
+
 </html>
