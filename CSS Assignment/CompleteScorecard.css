@@ -5,7 +5,10 @@
         }
 
         body {
-            background-image: linear-gradient(orangered,white,green);
+            background-image: repeating-radial-gradient(orangered,white,green,orangered,white,green,orangered,white,green,orangered,white,green);
+            background-repeat:repeat;
+            background-size: 40%;
+
             font-family: Arial, sans-serif;
             scale: 0.9;
         }
@@ -15,6 +18,7 @@
             height: 650px;
             margin: 30px auto;
             background-color: white;
+            filter: contrast(90%);
             background-image: url(/India\ Cricket\ Team\ Victory\ Celebration.png);
             background-size: cover;
             border-radius: 5px;
@@ -24,9 +28,10 @@
             position: relative;
             top: 5px;
             left: -2px;
+            filter: drop-shadow(0px 0px 5px black);
         }
         .icc{
-             text-shadow: 2px 2px 5px black;
+             text-shadow: 5px 5px 5px black;
         }
         .icc:hover{
             background-image: linear-gradient(orangered,white,green);
@@ -43,6 +48,7 @@
             text-align: right;
             font-size: 40px;
             font-weight: bold;
+            filter: drop-shadow(160px 750px 2px black);
             color: #f05136;
         }
 
@@ -74,6 +80,7 @@
         .head:hover{
             background-image: linear-gradient(orangered,white,green);
             color: blue;
+            text-shadow: none;
             border: none;
         }
         div:hover table:hover {
