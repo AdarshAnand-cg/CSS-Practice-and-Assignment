@@ -1,977 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>YouTube</title>
-
-    <link rel="icon"
-        href="https://www.youtube.com/s/desktop/a6171d17/img/favicon_96x96.png">
-
-    <style>
-
-        /* =========================
-           MAIN
-        ========================= */
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            color: white;
-        }
-
-        body {
-            background-color: #0f0f0f;
-            font-family: Arial, Helvetica, sans-serif;
-            overflow-x: hidden;
-        }
-
-        button,
-        input {
-            font-family: inherit;
-        }
-
-        button {
-            cursor: pointer;
-        }
-
-
-        /* =========================
-           SIDEBAR
-        ========================= */
-
-        .aside {
-            width: 240px;
-            height: 100vh;
-
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 20;
-
-            padding: 0 12px 20px;
-
-            background-color: #0f0f0f;
-
-            overflow-y: auto;
-
-            scrollbar-width: thin;
-            scrollbar-color: #555 transparent;
-        }
-
-        .sidebar-header {
-            height: 65px;
-
-            display: flex;
-            align-items: center;
-
-            gap: 20px;
-
-            padding: 0 8px;
-        }
-
-        .menu-button {
-            width: 38px;
-            height: 38px;
-
-            flex-shrink: 0;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            border: none;
-            border-radius: 50%;
-
-            background-color: transparent;
-        }
-
-        .menu-button:hover {
-            background-color: #272727;
-        }
-
-        .menu-button img {
-            width: 24px;
-            height: 24px;
-
-            object-fit: contain;
-        }
-
-        .youtube-logo {
-            width: 105px;
-            height: auto;
-
-            object-fit: contain;
-        }
-
-
-        /* SIDEBAR LIST */
-
-        .sidebar-list {
-            list-style: none;
-            padding: 8px 0;
-        }
-
-        .sidebar-item {
-            min-height: 42px;
-
-            padding: 0 12px;
-
-            display: flex;
-            align-items: center;
-
-            gap: 24px;
-
-            border-radius: 10px;
-
-            font-size: 14px;
-
-            cursor: pointer;
-
-            white-space: nowrap;
-        }
-
-        .sidebar-item:hover {
-            background-color: #272727;
-        }
-
-        .sidebar-item.active {
-            background-color: #272727;
-            font-weight: bold;
-        }
-
-
-        /* SIDEBAR ICON */
-
-        .sidebar-icon {
-            width: 24px;
-            height: 24px;
-
-            flex-shrink: 0;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .sidebar-icon img {
-            width: 23px;
-            height: 23px;
-
-            object-fit: contain;
-        }
-
-
-        /* DIVIDER */
-
-        .sidebar-divider {
-            border: none;
-            border-top: 1px solid #303030;
-
-            margin: 12px 0;
-        }
-
-
-        /* SUBSCRIPTION HEADING */
-
-        .sidebar-heading {
-            padding: 12px;
-
-            font-size: 16px;
-            font-weight: bold;
-        }
-
-
-        /* CHANNEL AVATAR */
-
-        .sidebar-avatar {
-            width: 25px;
-            height: 25px;
-
-            flex-shrink: 0;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            border-radius: 50%;
-
-            background-color: #454545;
-
-            font-size: 12px;
-        }
-
-
-        /* =========================
-           MAIN CONTENT
-        ========================= */
-
-        .main-content {
-            min-width: 0;
-
-            margin-left: 240px;
-        }
-
-
-        /* =========================
-           NAVBAR
-        ========================= */
-
-        .navbar {
-            height: 65px;
-
-            position: fixed;
-
-            top: 0;
-            left: 240px;
-            right: 0;
-
-            z-index: 15;
-
-            display: flex;
-            align-items: center;
-
-            justify-content: space-between;
-
-            gap: 24px;
-
-            padding: 0 28px;
-
-            background-color: #0f0f0f;
-        }
-
-
-        /* SEARCH */
-
-        .search-area {
-            width: 100%;
-            max-width: 720px;
-
-            min-width: 0;
-
-            flex: 1;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            margin: 0 auto;
-        }
-
-        .search-form {
-            min-width: 0;
-
-            flex: 1;
-
-            display: flex;
-            align-items: center;
-        }
-
-        .search {
-            width: 100%;
-            min-width: 0;
-
-            height: 42px;
-
-            padding: 0 18px;
-
-            background-color: #121212;
-
-            border: 1px solid #303030;
-            border-right: none;
-
-            border-radius: 22px 0 0 22px;
-
-            outline: none;
-
-            font-size: 16px;
-        }
-
-        .search:focus {
-            border-color: #315b9a;
-        }
-
-
-        /* SEARCH BUTTON */
-
-        .search-button {
-            width: 64px;
-            height: 42px;
-
-            flex-shrink: 0;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            background-color: #222222;
-
-            border: 1px solid #303030;
-
-            border-radius: 0 22px 22px 0;
-        }
-
-        .search-button:hover {
-            background-color: #383838;
-        }
-
-
-        /* SEARCH ICON */
-
-        .search-icon {
-            width: 17px;
-            height: 17px;
-
-            position: relative;
-
-            border: 2px solid white;
-
-            border-radius: 50%;
-        }
-
-        .search-icon::after {
-            content: "";
-
-            width: 7px;
-            height: 2px;
-
-            position: absolute;
-
-            right: -5px;
-            bottom: -3px;
-
-            background-color: white;
-
-            transform: rotate(45deg);
-        }
-
-
-        /* MICROPHONE */
-
-        .mic {
-            width: 42px;
-            height: 42px;
-
-            flex-shrink: 0;
-
-            margin-left: 14px;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            border: none;
-
-            border-radius: 50%;
-
-            background-color: #272727;
-        }
-
-        .mic:hover {
-            background-color: #3f3f3f;
-        }
-
-        .mic img {
-            width: 22px;
-            height: 22px;
-
-            object-fit: contain;
-        }
-
-
-        /* =========================
-           NAVBAR ACTIONS
-        ========================= */
-
-        .navbar-actions {
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
-
-            gap: 12px;
-
-            flex-shrink: 0;
-        }
-
-        .nav-action {
-            min-width: 40px;
-            height: 40px;
-
-            padding: 0 12px;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            gap: 7px;
-
-            border: none;
-
-            border-radius: 20px;
-
-            background-color: transparent;
-
-            font-size: 14px;
-        }
-
-        .nav-action:hover {
-            background-color: #272727;
-        }
-
-        .nav-action img {
-            width: 23px;
-            height: 23px;
-
-            object-fit: contain;
-        }
-
-
-        /* CREATE */
-
-        .create-plus {
-            display: flex;
-            align-items: center;
-        }
-
-
-        /* PROFILE */
-
-        .profile {
-            width: 34px;
-            height: 34px;
-
-            flex-shrink: 0;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            border-radius: 50%;
-
-            background-color: #2878c8;
-
-            font-weight: bold;
-        }
-
-
-        /* =========================
-           RECOMMENDATION BAR
-        ========================= */
-
-        .recommendation-wrapper {
-            height: 58px;
-
-            position: fixed;
-
-            top: 65px;
-            left: 240px;
-            right: 0;
-
-            z-index: 12;
-
-            background-color: #0f0f0f;
-        }
-
-        .recommendation {
-            height: 100%;
-
-            padding: 0 24px;
-
-            display: flex;
-            align-items: center;
-
-            gap: 12px;
-
-            overflow-x: auto;
-            overflow-y: hidden;
-
-            white-space: nowrap;
-
-            scrollbar-width: none;
-        }
-
-        .recommendation::-webkit-scrollbar {
-            display: none;
-        }
-
-        .recommendation button {
-            height: 34px;
-
-            padding: 0 14px;
-
-            flex-shrink: 0;
-
-            border: none;
-
-            border-radius: 8px;
-
-            background-color: #272727;
-
-            font-size: 14px;
-        }
-
-        .recommendation button:hover {
-            background-color: #3f3f3f;
-        }
-
-        .recommendation button.active {
-            background-color: white;
-            color: #0f0f0f;
-        }
-
-
-        /* =========================
-           VIDEOS
-        ========================= */
-
-        .videos {
-            width: 100%;
-
-            padding: 145px 24px 40px;
-        }
-
-        .row1 {
-            width: 100%;
-
-            display: grid;
-
-            grid-template-columns:
-                repeat(4, minmax(0, 1fr));
-
-            column-gap: 18px;
-
-            row-gap: 38px;
-        }
-
-        .video-card {
-            width: 100%;
-
-            min-width: 0;
-
-            cursor: pointer;
-        }
-
-
-        /* =========================
-           THUMBNAIL
-        ========================= */
-
-        .thumbnail-wrapper {
-            width: 100%;
-
-            aspect-ratio: 16 / 9;
-
-            position: relative;
-
-            overflow: hidden;
-
-            border-radius: 12px;
-
-            background-color: #272727;
-        }
-
-        .thumbnail {
-            display: block;
-
-            width: 100%;
-            height: 100%;
-
-            object-fit: cover;
-        }
-
-
-        /* VIDEO DURATION */
-
-        .video-duration {
-            position: absolute;
-
-            right: 7px;
-            bottom: 7px;
-
-            padding: 3px 5px;
-
-            border-radius: 4px;
-
-            background-color: rgba(0, 0, 0, 0.85);
-
-            font-size: 12px;
-
-            font-weight: bold;
-        }
-
-
-        /* =========================
-           VIDEO INFORMATION
-        ========================= */
-
-        .video-info {
-            display: flex;
-            align-items: flex-start;
-
-            gap: 12px;
-
-            padding-top: 12px;
-        }
-
-
-        /* CHANNEL ICON */
-
-        .channel-avatar {
-            width: 36px;
-            height: 36px;
-
-            flex-shrink: 0;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            border-radius: 50%;
-
-            background-color: #303030;
-
-            font-size: 14px;
-
-            font-weight: bold;
-        }
-
-
-        /* VIDEO DETAILS */
-
-        .video-details {
-            min-width: 0;
-
-            flex: 1;
-        }
-
-        .video-title {
-            overflow: hidden;
-
-            overflow-wrap: anywhere;
-
-            font-size: 15px;
-
-            font-weight: 600;
-
-            line-height: 1.45;
-        }
-
-        .channel-name {
-            margin-top: 5px;
-        }
-
-        .channel-name,
-        .video-stats {
-            color: #aaa;
-
-            font-size: 13px;
-
-            line-height: 1.7;
-        }
-
-
-        /* VIDEO MENU */
-
-        .video-menu {
-            width: 22px;
-            height: 28px;
-
-            flex-shrink: 0;
-
-            border: none;
-
-            background-color: transparent;
-
-            font-size: 19px;
-        }
-
-
-        /* =========================
-           LAPTOP
-        ========================= */
-
-        @media (max-width: 1450px) {
-
-            .row1 {
-                grid-template-columns:
-                    repeat(3, minmax(0, 1fr));
-
-                column-gap: 18px;
-
-                row-gap: 32px;
-            }
-
-            .navbar {
-                padding: 0 20px;
-
-                gap: 15px;
-            }
-
-            .navbar-actions {
-                gap: 5px;
-            }
-        }
-
-
-        /* =========================
-           SMALL LAPTOP
-        ========================= */
-
-        @media (max-width: 1050px) {
-
-            .aside {
-                width: 200px;
-            }
-
-            .main-content {
-                margin-left: 200px;
-            }
-
-            .navbar {
-                left: 200px;
-            }
-
-            .recommendation-wrapper {
-                left: 200px;
-            }
-
-            .row1 {
-                grid-template-columns:
-                    repeat(2, minmax(0, 1fr));
-
-                column-gap: 16px;
-
-                row-gap: 30px;
-            }
-
-            .videos {
-                padding-left: 18px;
-                padding-right: 18px;
-            }
-
-            .create-label {
-                display: none;
-            }
-        }
-
-
-        /* =========================
-           TABLET
-        ========================= */
-
-        @media (max-width: 760px) {
-
-            .aside {
-                width: 72px;
-
-                padding: 0 5px;
-            }
-
-            .sidebar-header {
-                justify-content: center;
-
-                padding: 0;
-            }
-
-            .youtube-logo {
-                display: none;
-            }
-
-            .sidebar-item {
-                min-height: 65px;
-
-                padding: 8px 2px;
-
-                flex-direction: column;
-
-                justify-content: center;
-
-                gap: 5px;
-
-                font-size: 10px;
-
-                text-align: center;
-
-                white-space: normal;
-            }
-
-            .sidebar-divider,
-            .sidebar-heading {
-                display: none;
-            }
-
-            .main-content {
-                margin-left: 72px;
-            }
-
-            .navbar {
-                left: 72px;
-
-                padding: 0 12px;
-
-                gap: 10px;
-            }
-
-            .recommendation-wrapper {
-                left: 72px;
-            }
-
-            .recommendation {
-                padding: 0 14px;
-
-                gap: 9px;
-            }
-
-            .navbar-actions {
-                gap: 3px;
-            }
-
-            .optional-action {
-                display: none;
-            }
-
-            .videos {
-                padding: 140px 14px 30px;
-            }
-
-            .video-info {
-                gap: 9px;
-            }
-
-            .channel-avatar {
-                width: 32px;
-                height: 32px;
-            }
-
-            .video-title {
-                font-size: 14px;
-            }
-        }
-
-
-        /* =========================
-           MOBILE
-        ========================= */
-
-        @media (max-width: 520px) {
-
-            .aside {
-                display: none;
-            }
-
-            .main-content {
-                margin-left: 0;
-            }
-
-            .navbar {
-                left: 0;
-
-                height: 58px;
-
-                padding: 0 12px;
-
-                gap: 8px;
-            }
-
-            .recommendation-wrapper {
-                top: 58px;
-
-                left: 0;
-
-                height: 52px;
-            }
-
-            .recommendation {
-                padding: 0 12px;
-
-                gap: 8px;
-            }
-
-            .recommendation button {
-                height: 32px;
-
-                padding: 0 12px;
-
-                font-size: 13px;
-            }
-
-            .search-area {
-                justify-content: flex-end;
-            }
-
-            .search {
-                height: 38px;
-
-                padding: 0 10px;
-
-                font-size: 14px;
-            }
-
-            .search-button {
-                width: 40px;
-
-                height: 38px;
-            }
-
-            .mic {
-                width: 36px;
-                height: 36px;
-
-                margin-left: 7px;
-            }
-
-            .create-button {
-                display: none;
-            }
-
-            .profile {
-                width: 30px;
-                height: 30px;
-
-                font-size: 13px;
-            }
-
-            .videos {
-                padding: 122px 12px 25px;
-            }
-
-            .row1 {
-                grid-template-columns:
-                    minmax(0, 1fr);
-
-                row-gap: 28px;
-            }
-
-            .thumbnail-wrapper {
-                border-radius: 10px;
-            }
-
-            .video-info {
-                padding-top: 10px;
-
-                gap: 12px;
-            }
-
-            .channel-avatar {
-                width: 36px;
-                height: 36px;
-            }
-
-            .video-title {
-                font-size: 15px;
-            }
-        }
-
-    </style>
+    <link rel="stylesheet" href="YTclone.css">
+    <link rel="icon" href="https://www.youtube.com/s/desktop/a6171d17/img/favicon_96x96.png">
 </head>
-
-
 <body>
-
-
     <!-- =========================
          SIDEBAR
     ========================= -->
@@ -980,10 +16,10 @@
 
         <div class="sidebar-header">
 
-            <button class="menu-button" aria-label="Menu">
+            <button class="menu-button">
 
                 <img
-                    src="assets/hambarger.png"
+                    src="https://github.com/codinggita/CGxSU_Semester_1/blob/main/Semester_1/html_css_js(sem_01)/CSS/00.assignment/02.level_2/08.youtube-clone/assets/hambarger.png?raw=true"
                     alt="Menu">
 
             </button>
@@ -991,7 +27,7 @@
 
             <img
                 class="youtube-logo"
-                src="assets/Youtube logo.png"
+                src="https://github.com/codinggita/CGxSU_Semester_1/blob/main/Semester_1/html_css_js(sem_01)/CSS/00.assignment/02.level_2/08.youtube-clone/assets/Youtube%20logo.png?raw=true"
                 alt="YouTube Logo">
 
         </div>
@@ -1004,30 +40,17 @@
             <li class="sidebar-item active">
 
                 <span class="sidebar-icon">
-
-                    <img
-                        src="assets/home.png"
-                        alt="Home">
-
+                    <img src="https://github.com/codinggita/CGxSU_Semester_1/blob/main/Semester_1/html_css_js(sem_01)/CSS/00.assignment/02.level_2/08.youtube-clone/assets/home.png?raw=true" alt="Home">
                 </span>
-
                 <span>Home</span>
-
             </li>
-
-
             <li class="sidebar-item">
-
                 <span class="sidebar-icon">
-
                     <img
-                        src="assets/explore.png"
+                        src="https://github.com/codinggita/CGxSU_Semester_1/blob/main/Semester_1/html_css_js(sem_01)/CSS/00.assignment/02.level_2/08.youtube-clone/assets/explore.png?raw=true"
                         alt="Explore">
-
                 </span>
-
                 <span>Explore</span>
-
             </li>
 
 
@@ -1036,7 +59,7 @@
                 <span class="sidebar-icon">
 
                     <img
-                        src="assets/shorts.png"
+                        src="https://github.com/codinggita/CGxSU_Semester_1/blob/main/Semester_1/html_css_js(sem_01)/CSS/00.assignment/02.level_2/08.youtube-clone/assets/shorts.png?raw=true"
                         alt="Shorts">
 
                 </span>
@@ -1051,7 +74,7 @@
                 <span class="sidebar-icon">
 
                     <img
-                        src="assets/subscription.png"
+                        src="https://github.com/codinggita/CGxSU_Semester_1/blob/main/Semester_1/html_css_js(sem_01)/CSS/00.assignment/02.level_2/08.youtube-clone/assets/subscription.png?raw=true"
                         alt="Subscriptions">
 
                 </span>
@@ -1075,7 +98,7 @@
                 <span class="sidebar-icon">
 
                     <img
-                        src="assets/library.png"
+                        src="https://github.com/codinggita/CGxSU_Semester_1/blob/main/Semester_1/html_css_js(sem_01)/CSS/00.assignment/02.level_2/08.youtube-clone/assets/library.png?raw=true"
                         alt="Library">
 
                 </span>
@@ -1090,7 +113,7 @@
                 <span class="sidebar-icon">
 
                     <img
-                        src="assets/history.png"
+                        src="https://github.com/codinggita/CGxSU_Semester_1/blob/main/Semester_1/html_css_js(sem_01)/CSS/00.assignment/02.level_2/08.youtube-clone/assets/history.png?raw=true"
                         alt="History">
 
                 </span>
@@ -1105,7 +128,7 @@
                 <span class="sidebar-icon">
 
                     <img
-                        src="assets/your_video.png"
+                        src="https://github.com/codinggita/CGxSU_Semester_1/blob/main/Semester_1/html_css_js(sem_01)/CSS/00.assignment/02.level_2/08.youtube-clone/assets/your_video.png?raw=true"
                         alt="Your videos">
 
                 </span>
@@ -1120,7 +143,7 @@
                 <span class="sidebar-icon">
 
                     <img
-                        src="assets/watch_later.png"
+                        src="https://github.com/codinggita/CGxSU_Semester_1/blob/main/Semester_1/html_css_js(sem_01)/CSS/00.assignment/02.level_2/08.youtube-clone/assets/watch_later.png?raw=true"
                         alt="Watch later">
 
                 </span>
@@ -1135,7 +158,7 @@
                 <span class="sidebar-icon">
 
                     <img
-                        src="assets/liked.png"
+                        src="https://github.com/codinggita/CGxSU_Semester_1/blob/main/Semester_1/html_css_js(sem_01)/CSS/00.assignment/02.level_2/08.youtube-clone/assets/liked.png?raw=true"
                         alt="Liked videos">
 
                 </span>
@@ -1150,7 +173,7 @@
                 <span class="sidebar-icon">
 
                     <img
-                        src="assets/down_arrow.png"
+                        src="https://github.com/codinggita/CGxSU_Semester_1/blob/main/Semester_1/html_css_js(sem_01)/CSS/00.assignment/02.level_2/08.youtube-clone/assets/down_arrow.png?raw=true"
                         alt="Show more">
 
                 </span>
@@ -1177,7 +200,7 @@
             <li class="sidebar-item">
 
                 <span class="sidebar-avatar">
-                    N
+                    <img src="https://github.com/codinggita/CGxSU_Semester_1/blob/main/Semester_1/html_css_js(sem_01)/CSS/00.assignment/02.level_2/08.youtube-clone/assets/Ellipse%201%20(6).png?raw=true">
                 </span>
 
                 <span>
@@ -1186,11 +209,10 @@
 
             </li>
 
-<div class="profile"
             <li class="sidebar-item">
 
                 <span class="sidebar-avatar">
-                    C
+                    <img src="https://github.com/codinggita/CGxSU_Semester_1/blob/main/Semester_1/html_css_js(sem_01)/CSS/00.assignment/02.level_2/08.youtube-clone/assets/Ellipse%201%20(1).png?raw=true">
                 </span>
 
                 <span>
@@ -1198,80 +220,86 @@
                 </span>
 
             </li>
+            <li class="sidebar-item">
+
+                <span class="sidebar-avatar">
+                    <img src="https://github.com/codinggita/CGxSU_Semester_1/blob/main/Semester_1/html_css_js(sem_01)/CSS/00.assignment/02.level_2/08.youtube-clone/assets/Ellipse%201%20(2).png?raw=true">
+                </span>
+
+                <span>
+                    MKBHD
+                </span>
+
+            </li>
+            <li class="sidebar-item">
+
+                <span class="sidebar-avatar">
+                    <img src="https://github.com/codinggita/CGxSU_Semester_1/blob/main/Semester_1/html_css_js(sem_01)/CSS/00.assignment/02.level_2/08.youtube-clone/assets/Ellipse%201%20(3).png?raw=true">
+                </span>
+
+                <span>
+                    Figma
+                </span>
+
+            </li>
+            <li class="sidebar-item">
+
+                <span class="sidebar-avatar">
+                    <img src="https://github.com/codinggita/CGxSU_Semester_1/blob/main/Semester_1/html_css_js(sem_01)/CSS/00.assignment/02.level_2/08.youtube-clone/assets/Ellipse%201%20(4).png?raw=true">
+                </span>
+
+                <span>
+                    ATC Android ToTo C...
+                </span>
+
+            </li>
+            <li class="sidebar-item">
+
+                <span class="sidebar-avatar">
+                    <img src="https://github.com/codinggita/CGxSU_Semester_1/blob/main/Semester_1/html_css_js(sem_01)/CSS/00.assignment/02.level_2/08.youtube-clone/assets/Ellipse%201%20(5).png?raw=true">
+                </span>
+
+                <span>
+                    Alux.com
+                </span>
+
+            </li>
 
         </ul>
 
     </aside>
-
-
-
-    <!-- =========================
-         MAIN CONTENT
-    ========================= -->
-
     <main class="main-content">
-
-
-        <!-- =========================
-             NAVBAR
-        ========================= -->
-
         <header class="navbar">
-
 
             <!-- SEARCH -->
 
             <div class="search-area">
+                <form class="search-form" action="#" method="get">
+                    <input class="search" type="search" name="search" placeholder="Search">
 
-                <form
-                    class="search-form"
-                    action="#"
-                    method="get">
-
-                    <input
-                        class="search"
-                        type="search"
-                        name="search"
-                        placeholder="Search"
-                        aria-label="Search">
-
-
-                    <button
-                        class="search-button"
-                        type="submit"
-                        aria-label="Search">
-
+                    <button class="search-button" type="submit">
                         <span class="search-icon"></span>
-
                     </button>
-
                 </form>
 
-
                 <!-- MICROPHONE -->
-
                 <button
                     class="mic"
                     type="button"
                     aria-label="Microphone">
 
                     <img
-                        src="assets/mic.png"
+                        src="https://github.com/codinggita/CGxSU_Semester_1/blob/main/Semester_1/html_css_js(sem_01)/CSS/00.assignment/02.level_2/08.youtube-clone/assets/mic.png?raw=true"
                         alt="Microphone">
 
                 </button>
-
             </div>
-
-
 
             <!-- NAVBAR ACTIONS -->
 
             <div class="navbar-actions">
 
-
                 <!-- CREATE -->
-
                 <button
                     class="nav-action create-button"
                     type="button">
@@ -1279,7 +307,7 @@
                     <span class="create-plus">
 
                         <img
-                            src="assets/create.png"
+                            src="https://github.com/codinggita/CGxSU_Semester_1/blob/main/Semester_1/html_css_js(sem_01)/CSS/00.assignment/02.level_2/08.youtube-clone/assets/create.png?raw=true"
                             alt="Create">
 
                     </span>
@@ -1301,7 +329,7 @@
                     <span class="create-plus">
 
                         <img
-                            src="assets/more.png"
+                            src="https://github.com/codinggita/CGxSU_Semester_1/blob/main/Semester_1/html_css_js(sem_01)/CSS/00.assignment/02.level_2/08.youtube-clone/assets/more.png?raw=true"
                             alt="More">
 
                     </span>
@@ -1317,7 +345,7 @@
                     aria-label="Notifications">
 
                     <img
-                        src="assets/bell.png"
+                        src="https://github.com/codinggita/CGxSU_Semester_1/blob/main/Semester_1/html_css_js(sem_01)/CSS/00.assignment/02.level_2/08.youtube-clone/assets/bell.png?raw=true"
                         alt="Notifications">
 
                 </button>
@@ -1326,18 +354,12 @@
                 <!-- PROFILE -->
 
                 <div class="profile">
-                    R
+                    A
                 </div>
 
             </div>
 
         </header>
-
-
-
-        <!-- =========================
-             RECOMMENDATIONS
-        ========================= -->
 
         <nav class="recommendation-wrapper">
 
@@ -1428,7 +450,7 @@
 
                         <img
                             class="thumbnail"
-                            src="assets/Thumbnail-8.png"
+                            src="https://github.com/codinggita/CGxSU_Semester_1/blob/main/Semester_1/html_css_js(sem_01)/CSS/00.assignment/02.level_2/08.youtube-clone/assets/Thumbnail-8.png?raw=true"
                             alt="Bulbuli Coke Studio Bangla">
 
                         <span class="video-duration">
@@ -1481,7 +503,7 @@
 
                         <img
                             class="thumbnail"
-                            src="assets/Thumbnail-9.png"
+                            src="https://github.com/codinggita/CGxSU_Semester_1/blob/main/Semester_1/html_css_js(sem_01)/CSS/00.assignment/02.level_2/08.youtube-clone/assets/Thumbnail-9.png?raw=true"
                             alt="Infinix Note 12">
 
                         <span class="video-duration">
@@ -1534,7 +556,7 @@
 
                         <img
                             class="thumbnail"
-                            src="assets/Thumbnail-10.png"
+                            src="https://github.com/codinggita/CGxSU_Semester_1/blob/main/Semester_1/html_css_js(sem_01)/CSS/00.assignment/02.level_2/08.youtube-clone/assets/Thumbnail-10.png?raw=true"
                             alt="UX Design Case Study">
 
                         <span class="video-duration">
@@ -1587,7 +609,7 @@
 
                         <img
                             class="thumbnail"
-                            src="assets/Thumbnail-11.png"
+                            src="https://github.com/codinggita/CGxSU_Semester_1/blob/main/Semester_1/html_css_js(sem_01)/CSS/00.assignment/02.level_2/08.youtube-clone/assets/Thumbnail-11.png?raw=true"
                             alt="My Mix">
 
                         <span class="video-duration">
@@ -1640,7 +662,7 @@
 
                         <img
                             class="thumbnail"
-                            src="assets/Thumbnail-4.png"
+                            src="https://github.com/codinggita/CGxSU_Semester_1/blob/main/Semester_1/html_css_js(sem_01)/CSS/00.assignment/02.level_2/08.youtube-clone/assets/Thumbnail-4.png?raw=true"
                             alt="UX Design">
 
                         <span class="video-duration">
@@ -1693,7 +715,7 @@
 
                         <img
                             class="thumbnail"
-                            src="assets/Thumbnail-5.png"
+                            src="https://github.com/codinggita/CGxSU_Semester_1/blob/main/Semester_1/html_css_js(sem_01)/CSS/00.assignment/02.level_2/08.youtube-clone/assets/Thumbnail-5.png?raw=true"
                             alt="Mombati Music">
 
                         <span class="video-duration">
@@ -1746,7 +768,7 @@
 
                         <img
                             class="thumbnail"
-                            src="assets/Thumbnail-6.png"
+                            src="https://github.com/codinggita/CGxSU_Semester_1/blob/main/Semester_1/html_css_js(sem_01)/CSS/00.assignment/02.level_2/08.youtube-clone/assets/Thumbnail-6.png?raw=true"
                             alt="Visa Free Travel">
 
                         <span class="video-duration">
@@ -1799,7 +821,7 @@
 
                         <img
                             class="thumbnail"
-                            src="assets/Thumbnail-7.png"
+                            src="https://github.com/codinggita/CGxSU_Semester_1/blob/main/Semester_1/html_css_js(sem_01)/CSS/00.assignment/02.level_2/08.youtube-clone/assets/Thumbnail-7.png?raw=true"
                             alt="Advanced Figma Tips">
 
                         <span class="video-duration">
@@ -1852,7 +874,7 @@
 
                         <img
                             class="thumbnail"
-                            src="assets/Thumbnail.png"
+                            src="https://github.com/codinggita/CGxSU_Semester_1/blob/main/Semester_1/html_css_js(sem_01)/CSS/00.assignment/02.level_2/08.youtube-clone/assets/Thumbnail.png?raw=true"
                             alt="Hello World">
 
                         <span class="video-duration">
@@ -1905,7 +927,7 @@
 
                         <img
                             class="thumbnail"
-                            src="assets/Thumbnail-1.png"
+                            src="https://github.com/codinggita/CGxSU_Semester_1/blob/main/Semester_1/html_css_js(sem_01)/CSS/00.assignment/02.level_2/08.youtube-clone/assets/Thumbnail-3.png?raw=true"
                             alt="Technology">
 
                         <span class="video-duration">
@@ -1958,7 +980,7 @@
 
                         <img
                             class="thumbnail"
-                            src="assets/Thumbnail-2.png"
+                            src="https://github.com/codinggita/CGxSU_Semester_1/blob/main/Semester_1/html_css_js(sem_01)/CSS/00.assignment/02.level_2/08.youtube-clone/assets/Thumbnail-2.png?raw=true"
                             alt="Gaming Highlights">
 
                         <span class="video-duration">
@@ -2011,7 +1033,7 @@
 
                         <img
                             class="thumbnail"
-                            src="assets/Thumbnail-3.png"
+                            src="https://github.com/codinggita/CGxSU_Semester_1/blob/main/Semester_1/html_css_js(sem_01)/CSS/00.assignment/02.level_2/08.youtube-clone/assets/Thumbnail-3.png?raw=true"
                             alt="Music Collection">
 
                         <span class="video-duration">
