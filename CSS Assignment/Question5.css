@@ -40,7 +40,7 @@ body {
 .main {
   display: flex;
   flex-direction: row; /* From column to row */
-  flex-grow: 1; 
+  flex: 1 0 0;  /*Introducing flex (shorthand) Property*/
   gap: 20px;
   padding: 20px;
 }
